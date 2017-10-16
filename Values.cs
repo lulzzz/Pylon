@@ -14,7 +14,7 @@ namespace AiursoftBase
         public static string ProjectName = "Aiursoft";
         public static string CorpPhoneNumber = "(+86) 8368-5000";
         public static string Schema = "https";
-        public static bool ForceRequestHttps = false;
+        public static bool ForceRequestHttps = true;
         public static string WSSchema = "wss";
         public static bool SupportHttps => Schema.ToLower() == "https";
         public static string Domain { get; private set; } = "aiursoft.com";
@@ -44,11 +44,11 @@ namespace AiursoftBase
         {
             if (string.IsNullOrWhiteSpace(appId))
             {
-                throw new NotAValidAiurArgumentException(nameof(appId));
+                throw new InvalidOperationException(nameof(appId));
             }
             if (string.IsNullOrWhiteSpace(appSecret))
             {
-                throw new NotAValidAiurArgumentException(nameof(appSecret));
+                throw new InvalidOperationException(nameof(appSecret));
             }
             if (!string.IsNullOrWhiteSpace(ServerAddress))
             {

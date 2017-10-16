@@ -1,4 +1,5 @@
 ﻿using AiursoftBase.Exceptions;
+using AiursoftBase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
@@ -14,9 +15,14 @@ namespace AiursoftBase.Attributes
         {
             base.OnActionExecuting(context);
             var controller = context.Controller as Controller;
-            if(!controller.ModelState.IsValid)
+            if (!controller.ModelState.IsValid)
             {
-                throw new ModelStateNotValidException();
+                var arg = new AiurProtocal
+                {
+                    code = ErrorType.InvalidInput,
+                    message = "Input not valid!"
+                };
+                context.Result = new JsonResult(arg);
             }
         }
     }

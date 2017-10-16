@@ -1,6 +1,7 @@
 ﻿using AiursoftBase.Exceptions;
 using AiursoftBase.Models;
 using AiursoftBase.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
@@ -19,40 +20,20 @@ namespace AiursoftBase.Attributes
             base.OnException(context);
             switch (context.Exception)
             {
-                case NotAiurSignedInException exp:
-                    var r = context.HttpContext.Request;
-                    string serverPosition = $"{r.Scheme}://{r.Host}";
-                    string url = UrlConverter.UrlWithAuth(serverPosition, exp.SignInRedirectPath, exp.JustTry);
-                    context.ExceptionHandled = true;
-                    context.HttpContext.Response.Redirect(url);
-                    break;
+                // When Aiur http service get unexcepted response from aiur services.
                 case AiurUnexceptedResponse exp:
-                    Redirect(exp.Response.code, exp.Response.message);
-                    break;
-                case ModelStateNotValidException exp:
-                    Redirect(ErrorType.InvalidInput, "Input not valid!");
-                    break;
-                case WrongAccessTokenException exp:
-                    Redirect(ErrorType.Unauthorized, "We can not validate your access token!");
-                    break;
-                case TimeOutAccessTokenException exp:
-                    Redirect(ErrorType.Unauthorized, "Your access token is already Timeout!");
-                    break;
-                case Exception exp:
-                    throw exp;
-                    //Redirect(ErrorType.UnknownError, exp.Message);
-                default:
+                    ReturnJson(exp.Response.code, exp.Response.message);
                     break;
             }
-            void Redirect(ErrorType errorType, string message)
+            void ReturnJson(ErrorType errorType, string message)
             {
                 var arg = new AiurProtocal
                 {
-                    code = ErrorType.Unauthorized,
+                    code = errorType,
                     message = message
                 };
                 context.ExceptionHandled = true;
-                context.HttpContext.Response.Redirect(new AiurUrl(string.Empty, "api", "exception", arg).ToString());
+                context.Result = new JsonResult(arg);
             }
         }
     }

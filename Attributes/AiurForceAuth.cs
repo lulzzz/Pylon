@@ -1,5 +1,6 @@
 ﻿using AiursoftBase.Exceptions;
 using AiursoftBase.Models;
+using AiursoftBase.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -59,11 +60,11 @@ namespace AiursoftBase.Attributes
                     {
                         return;
                     }
-                    throw new NotAiurSignedInException(controller, _preferPage, _justTry);
+                    context.Result = _Redirect(context, _preferPage, _justTry);
                 }
                 else
                 {
-                    throw new NotAiurSignedInException(controller, controller.Request.Path.Value, null);
+                    context.Result = _Redirect(context, controller.Request.Path.Value, null);
                 }
             }
             //Signed in, let him go to prefered page directly.
@@ -76,6 +77,19 @@ namespace AiursoftBase.Attributes
             {
                 return;
             }
+        }
+
+        public void OnActionExecuted(ActionExecutedContext context)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private RedirectResult _Redirect(ActionExecutingContext context, string page, bool? justTry)
+        {
+            var r = context.HttpContext.Request;
+            string serverPosition = $"{r.Scheme}://{r.Host}";
+            string url = UrlConverter.UrlWithAuth(serverPosition, page, justTry);
+            return new RedirectResult(url);
         }
     }
 }

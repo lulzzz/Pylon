@@ -5,10 +5,10 @@ using System.Text;
 
 namespace AiursoftBase.Attributes
 {
-    public class AiurAllowAnyOrigin: ActionFilterAttribute
+    public class AiurAllowTargetOrigin: ActionFilterAttribute
     {
         public string Origin { get; set; }
-        public AiurAllowAnyOrigin(string origin)
+        public AiurAllowTargetOrigin(string origin)
         {
             Origin = origin;
         }

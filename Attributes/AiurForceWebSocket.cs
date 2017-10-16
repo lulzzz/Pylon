@@ -1,4 +1,6 @@
 ﻿using AiursoftBase.Exceptions;
+using AiursoftBase.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
@@ -13,7 +15,12 @@ namespace AiursoftBase.Attributes
             base.OnActionExecuting(context);
             if (!context.HttpContext.WebSockets.IsWebSocketRequest)
             {
-                throw new WrongProtocolException();
+                var arg = new AiurProtocal
+                {
+                    code = ErrorType.InvalidInput,
+                    message = "Wrong protocal!"
+                };
+                context.Result = new JsonResult(arg);
             }
         }
     }
