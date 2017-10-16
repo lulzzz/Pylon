@@ -7,15 +7,9 @@ package-lock.json
 *.min.js
 bin
 obj
-/src/OSS/Storage
 node_modules
-/src/Developer/Storage
-Storage
 .vscode
 Properties
-/src/CDN/fonts
-/src/Kahla/wwwroot/app/**/*.js
-/src/Kahla/wwwroot/app/**/*.map
 npm-debug.log
 yarn.lock
 bundle.js
