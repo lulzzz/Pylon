@@ -79,11 +79,6 @@ namespace AiursoftBase.Attributes
             }
         }
 
-        public void OnActionExecuted(ActionExecutedContext context)
-        {
-            throw new System.NotImplementedException();
-        }
-
         private RedirectResult _Redirect(ActionExecutingContext context, string page, bool? justTry)
         {
             var r = context.HttpContext.Request;
