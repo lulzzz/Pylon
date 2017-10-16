@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+  <Version>0.0.1</Version>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>AiursoftBase</AssemblyName>
+    <PackageId>AiursoftBase</PackageId>
+    <Company>Aiursoft</Company>
+    <Product>AiursoftBWeb</Product>
+    <Authors>Anduin</Authors>
+    <Description>The base class, interfaces and services for Aiursoft web apps.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.0.0" />
+    <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" PrivateAssets="All" />
+  </ItemGroup>
+</Project>
