@@ -10,11 +10,6 @@ namespace AiursoftBase
 {
     public class AiurController : Controller
     {
-        public IActionResult Exception(AiurProtocal model)
-        {
-            return Json(model);
-        }
-
         public IActionResult SignoutRootServer(AiurUrl ToRedirect)
         {
             var r = HttpContext.Request;
