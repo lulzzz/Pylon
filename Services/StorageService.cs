@@ -27,7 +27,7 @@ namespace AiursoftBase.Services
             }
             else
             {
-                localFilePath = directoryPath + File.FileName;
+                localFilePath = directoryPath + File.FileName.Replace(" ","_");
             }
             var fileStream = new FileStream(localFilePath, FileMode.Create);
             await File.CopyToAsync(fileStream);
