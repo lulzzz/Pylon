@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Aiursoft.Pylon.Models.MessageQueue
+namespace Aiursoft.Pylon.Models.Stargate
 {
     public class Message
     {

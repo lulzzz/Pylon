@@ -1,22 +1,22 @@
 ﻿using Aiursoft.Pylon.Exceptions;
 using Aiursoft.Pylon.Models;
-using Aiursoft.Pylon.Models.MessageQueue.ChannelAddressModels;
-using Aiursoft.Pylon.Models.MessageQueue.ChannelViewModels;
-using Aiursoft.Pylon.Models.MessageQueue.ListenAddressModels;
+using Aiursoft.Pylon.Models.Stargate.ChannelAddressModels;
+using Aiursoft.Pylon.Models.Stargate.ChannelViewModels;
+using Aiursoft.Pylon.Models.Stargate.ListenAddressModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aiursoft.Pylon.Services.ToMessageQueueServer
+namespace Aiursoft.Pylon.Services.ToStargateServer
 {
     public class ChannelService
     {
         public static async Task<CreateChannelViewModel> CreateChannelAsync(string AccessToken, string Description)
         {
             var httpContainer = new HTTPService();
-            var url = new AiurUrl(Values.MessageQueueServerAddress, "Channel", "CreateChannel", new { });
+            var url = new AiurUrl(Values.StargateServerAddress, "Channel", "CreateChannel", new { });
             var form = new AiurUrl(string.Empty, new CreateChannelAddressModel
             {
                 AccessToken = AccessToken,
@@ -32,7 +32,7 @@ namespace Aiursoft.Pylon.Services.ToMessageQueueServer
         public static async Task<AiurProtocal> ValidateChannelAsync(int Id, string Key)
         {
             var httpContainer = new HTTPService();
-            var url = new AiurUrl(Values.MessageQueueServerAddress, "Channel", "ValidateChannel", new ChannelAddressModel
+            var url = new AiurUrl(Values.StargateServerAddress, "Channel", "ValidateChannel", new ChannelAddressModel
             {
                 Id = Id,
                 Key = Key

@@ -1,20 +1,20 @@
 ﻿using Aiursoft.Pylon.Exceptions;
 using Aiursoft.Pylon.Models;
-using Aiursoft.Pylon.Models.MessageQueue.MessageAddressModels;
+using Aiursoft.Pylon.Models.Stargate.MessageAddressModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aiursoft.Pylon.Services.ToMessageQueueServer
+namespace Aiursoft.Pylon.Services.ToStargateServer
 {
     public class MessageService
     {
         public static async Task<AiurProtocal> PushMessageAsync(string AccessToken, int ChannelId, string MessageContent, bool noexception = false)
         {
             var httpContainer = new HTTPService();
-            var url = new AiurUrl(Values.MessageQueueServerAddress, "Message", "PushMessage", new { });
+            var url = new AiurUrl(Values.StargateServerAddress, "Message", "PushMessage", new { });
             var form = new AiurUrl(string.Empty, new PushMessageAddressModel
             {
                 AccessToken = AccessToken,

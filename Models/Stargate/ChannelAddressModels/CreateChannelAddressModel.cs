@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Aiursoft.Pylon.Models.MessageQueue.ChannelAddressModels
+namespace Aiursoft.Pylon.Models.Stargate.ChannelAddressModels
 {
     public class CreateChannelAddressModel
     {

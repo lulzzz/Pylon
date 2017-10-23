@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Aiursoft.Pylon.Models.MessageQueue
+namespace Aiursoft.Pylon.Models.Stargate
 {
-    public class MessageQueueApp
+    public class StargateApp
     {
         [Key]
         public string Id { get; set; }

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Aiursoft.Pylon.Models.MessageQueue
+namespace Aiursoft.Pylon.Models.Stargate
 {
     public class Channel
     {
@@ -20,6 +20,6 @@ namespace Aiursoft.Pylon.Models.MessageQueue
         public string AppId { get; set; }
         [ForeignKey(nameof(AppId))]
         [JsonIgnore]
-        public MessageQueueApp App { get; set; }
+        public StargateApp App { get; set; }
     }
 }

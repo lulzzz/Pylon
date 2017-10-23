@@ -25,8 +25,8 @@ namespace Aiursoft.Pylon
         public static string OssServerAddress { get; private set; } = Schema + "://oss." + Domain;
         public static string CdnServerAddress { get; private set; } = Schema + "://cdn." + Domain;
         public static string WikiServerAddress { get; private set; } = Schema + "://wiki." + Domain;
-        public static string MessageQueueServerAddress { get; private set; } = Schema + "://messagequeue." + Domain;
-        public static string MessageQueueListenAddress { get; private set; } = WSSchema + "://messagequeue." + Domain;
+        public static string StargateServerAddress { get; private set; } = Schema + "://stargate." + Domain;
+        public static string StargateListenAddress { get; private set; } = WSSchema + "://stargate." + Domain;
         public static string HrServerAddress { get; private set; } = Schema + "://hr." + Domain;
         public static string WWWServerAddress { get; private set; } = Schema + "://www." + Domain;
         public static string ForumServerAddress { get; private set; } = Schema + "://forum." + Domain;
