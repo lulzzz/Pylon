@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace AiursoftBase.Models.API.UserAddressModels
+namespace Aiursoft.Pylon.Models.API.UserAddressModels
 {
     public class ChangePasswordAddressModel : WithAccessTokenAddressModel
     {

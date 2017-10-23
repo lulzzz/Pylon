@@ -1,13 +1,13 @@
-﻿using AiursoftBase.Exceptions;
-using AiursoftBase.Models;
-using AiursoftBase.Models.MessageQueue.MessageAddressModels;
+﻿using Aiursoft.Pylon.Exceptions;
+using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Models.MessageQueue.MessageAddressModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Services.ToMessageQueueServer
+namespace Aiursoft.Pylon.Services.ToMessageQueueServer
 {
     public class MessageService
     {

@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Models.OSS
+namespace Aiursoft.Pylon.Models.OSS
 {
     public class OSSApp
     {

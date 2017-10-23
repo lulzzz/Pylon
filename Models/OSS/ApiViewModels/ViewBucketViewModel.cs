@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Models.OSS.ApiViewModels
+namespace Aiursoft.Pylon.Models.OSS.ApiViewModels
 {
     public class ViewBucketViewModel : AiurProtocal
     {

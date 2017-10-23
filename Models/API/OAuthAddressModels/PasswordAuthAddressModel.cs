@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase.Models.API.OAuthAddressModels
+namespace Aiursoft.Pylon.Models.API.OAuthAddressModels
 {
     public class PasswordAuthAddressModel
     {

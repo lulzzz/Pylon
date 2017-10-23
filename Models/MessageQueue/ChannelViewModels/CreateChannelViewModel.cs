@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase.Models.MessageQueue.ChannelViewModels
+namespace Aiursoft.Pylon.Models.MessageQueue.ChannelViewModels
 {
     public class CreateChannelViewModel : AiurProtocal
     {

@@ -1,6 +1,6 @@
-﻿using AiursoftBase.Exceptions;
-using AiursoftBase.Models;
-using AiursoftBase.Services;
+﻿using Aiursoft.Pylon.Exceptions;
+using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Attributes
+namespace Aiursoft.Pylon.Attributes
 {
     /// <summary>
     /// This will stop current action with any Aiursoft exceptions.

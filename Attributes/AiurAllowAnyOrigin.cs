@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase.Attributes
+namespace Aiursoft.Pylon.Attributes
 {
     public class AiurAllowTargetOrigin: ActionFilterAttribute
     {

@@ -1,10 +1,10 @@
-﻿using AiursoftBase.Services.ToAPIServer;
+﻿using Aiursoft.Pylon.Services.ToAPIServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Models
+namespace Aiursoft.Pylon.Models
 {
     /// <summary>
     /// For storaging other apps with appid and appsecret for current app.

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase.Models.MessageQueue.ListenAddressModels
+namespace Aiursoft.Pylon.Models.MessageQueue.ListenAddressModels
 {
     public class ChannelAddressModel
     {

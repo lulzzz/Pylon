@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase.Models.OSS.ApiAddressModels
+namespace Aiursoft.Pylon.Models.OSS.ApiAddressModels
 {
     public class ViewOneFileAddressModel
     {

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Models.Developer.ApiAddressModels
+namespace Aiursoft.Pylon.Models.Developer.ApiAddressModels
 {
     public class AppInfoAddressModel
     {

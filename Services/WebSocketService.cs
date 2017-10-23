@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Net.WebSockets;
 using System.Threading;
 
-namespace AiursoftBase.Services
+namespace Aiursoft.Pylon.Services
 {
     public static class WebSocketService
     {

@@ -6,10 +6,10 @@ using static System.IO.Directory;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using AiursoftBase.Services.ToOSSServer;
-using AiursoftBase.Models;
+using Aiursoft.Pylon.Services.ToOSSServer;
+using Aiursoft.Pylon.Models;
 
-namespace AiursoftBase.Services
+namespace Aiursoft.Pylon.Services
 {
     public static class StorageService
     {

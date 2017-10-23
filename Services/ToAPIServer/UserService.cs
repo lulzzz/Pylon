@@ -1,14 +1,14 @@
-﻿using AiursoftBase.Exceptions;
-using AiursoftBase.Models;
-using AiursoftBase.Models.API.ApiViewModels;
-using AiursoftBase.Models.API.UserAddressModels;
+﻿using Aiursoft.Pylon.Exceptions;
+using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Models.API.ApiViewModels;
+using Aiursoft.Pylon.Models.API.UserAddressModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Services.ToAPIServer
+namespace Aiursoft.Pylon.Services.ToAPIServer
 {
     public static class UserService
     {

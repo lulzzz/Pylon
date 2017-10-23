@@ -1,10 +1,10 @@
-﻿using AiursoftBase.Models;
+﻿using Aiursoft.Pylon.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Exceptions
+namespace Aiursoft.Pylon.Exceptions
 {
     public class AiurUnexceptedResponse : Exception
     {

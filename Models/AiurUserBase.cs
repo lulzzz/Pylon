@@ -1,9 +1,9 @@
 ﻿using System;
-using AiursoftBase.Models.API.OAuthViewModels;
+using Aiursoft.Pylon.Models.API.OAuthViewModels;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Identity;
 
-namespace AiursoftBase.Models
+namespace Aiursoft.Pylon.Models
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class AiurUserBase : IdentityUser

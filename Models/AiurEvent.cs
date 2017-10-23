@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase.Models
+namespace Aiursoft.Pylon.Models
 {
     public enum EventType : int
     {

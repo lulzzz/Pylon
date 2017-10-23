@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase.Models.OSS.ApiViewModels
+namespace Aiursoft.Pylon.Models.OSS.ApiViewModels
 {
     public class ViewOneFileViewModel : AiurProtocal
     {

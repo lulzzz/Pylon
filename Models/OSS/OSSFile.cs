@@ -1,4 +1,4 @@
-﻿using AiursoftBase.Models.OSS.ApiViewModels;
+﻿using Aiursoft.Pylon.Models.OSS.ApiViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Models.OSS
+namespace Aiursoft.Pylon.Models.OSS
 {
     public class OSSFile
     {

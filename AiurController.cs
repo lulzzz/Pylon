@@ -1,12 +1,12 @@
-﻿using AiursoftBase.Models;
-using AiursoftBase.Models.API.OAuthAddressModels;
+﻿using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Models.API.OAuthAddressModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase
+namespace Aiursoft.Pylon
 {
     public class AiurController : Controller
     {

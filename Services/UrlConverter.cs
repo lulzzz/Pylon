@@ -1,7 +1,7 @@
-﻿using AiursoftBase.Models;
-using AiursoftBase.Models.API.OAuthAddressModels;
+﻿using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Models.API.OAuthAddressModels;
 
-namespace AiursoftBase.Services
+namespace Aiursoft.Pylon.Services
 {
 
     public static class UrlConverter

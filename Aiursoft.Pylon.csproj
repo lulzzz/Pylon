@@ -2,8 +2,8 @@
   <PropertyGroup>
   <Version>0.0.4</Version>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>AiursoftBase</AssemblyName>
-    <PackageId>AiursoftBase</PackageId>
+    <AssemblyName>Aiursoft.Pylon</AssemblyName>
+    <PackageId>Aiursoft.Pylon</PackageId>
     <Company>Aiursoft</Company>
     <Product>AiursoftBWeb</Product>
     <Authors>Anduin</Authors>

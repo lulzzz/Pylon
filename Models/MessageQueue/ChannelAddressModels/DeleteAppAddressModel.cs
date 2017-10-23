@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase.Models.MessageQueue.ChannelAddressModels
+namespace Aiursoft.Pylon.Models.MessageQueue.ChannelAddressModels
 {
     public class DeleteAppAddressModel
     {

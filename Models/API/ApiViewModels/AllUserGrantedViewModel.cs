@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase.Models.API.ApiViewModels
+namespace Aiursoft.Pylon.Models.API.ApiViewModels
 {
     public class AllUserGrantedViewModel : AiurProtocal
     {

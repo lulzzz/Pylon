@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace AiursoftBase.Attributes
+namespace Aiursoft.Pylon.Attributes
 {
     public class AiurRequireHttps : RequireHttpsAttribute
     {

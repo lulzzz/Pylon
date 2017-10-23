@@ -1,14 +1,14 @@
-﻿using AiursoftBase.Exceptions;
-using AiursoftBase.Models;
-using AiursoftBase.Models.OSS.ApiAddressModels;
-using AiursoftBase.Models.OSS.ApiViewModels;
+﻿using Aiursoft.Pylon.Exceptions;
+using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Models.OSS.ApiAddressModels;
+using Aiursoft.Pylon.Models.OSS.ApiViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Services.ToOSSServer
+namespace Aiursoft.Pylon.Services.ToOSSServer
 {
     public class ApiService
     {

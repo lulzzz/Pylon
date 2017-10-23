@@ -1,6 +1,6 @@
 using System;
 
-namespace AiursoftBase.Models.Developer
+namespace Aiursoft.Pylon.Models.Developer
 {
     public class Permission
     {

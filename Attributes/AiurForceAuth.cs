@@ -1,10 +1,10 @@
-﻿using AiursoftBase.Exceptions;
-using AiursoftBase.Models;
-using AiursoftBase.Services;
+﻿using Aiursoft.Pylon.Exceptions;
+using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace AiursoftBase.Attributes
+namespace Aiursoft.Pylon.Attributes
 {
     /// <summary>
     /// Request the signed in token or throw a NotAiurSignedInException

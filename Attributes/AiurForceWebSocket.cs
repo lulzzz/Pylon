@@ -1,12 +1,12 @@
-﻿using AiursoftBase.Exceptions;
-using AiursoftBase.Models;
+﻿using Aiursoft.Pylon.Exceptions;
+using Aiursoft.Pylon.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase.Attributes
+namespace Aiursoft.Pylon.Attributes
 {
     public class AiurForceWebSocket : ActionFilterAttribute
     {

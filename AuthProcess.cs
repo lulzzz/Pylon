@@ -1,6 +1,6 @@
-﻿using AiursoftBase.Models;
-using AiursoftBase.Models.ForApps.AddressModels;
-using AiursoftBase.Services.ToAPIServer;
+﻿using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Models.ForApps.AddressModels;
+using Aiursoft.Pylon.Services.ToAPIServer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using System;
 
-namespace AiursoftBase
+namespace Aiursoft.Pylon
 {
     public class AuthProcess
     {

@@ -1,5 +1,5 @@
-using AiursoftBase.Models;
-using AiursoftBase.Models.API.OAuthAddressModels;
+using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Models.API.OAuthAddressModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using System.Globalization;
 
-namespace AiursoftBase
+namespace Aiursoft.Pylon
 {
     public class AiurApiController : AiurController
     {

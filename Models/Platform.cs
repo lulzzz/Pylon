@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Models
+namespace Aiursoft.Pylon.Models
 {
     public enum Platform : int
     {

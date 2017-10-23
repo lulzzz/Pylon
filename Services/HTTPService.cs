@@ -1,4 +1,4 @@
-﻿using AiursoftBase.Models;
+﻿using Aiursoft.Pylon.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Services
+namespace Aiursoft.Pylon.Services
 {
     public class HTTPService
     {

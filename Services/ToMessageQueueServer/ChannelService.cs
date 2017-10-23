@@ -1,15 +1,15 @@
-﻿using AiursoftBase.Exceptions;
-using AiursoftBase.Models;
-using AiursoftBase.Models.MessageQueue.ChannelAddressModels;
-using AiursoftBase.Models.MessageQueue.ChannelViewModels;
-using AiursoftBase.Models.MessageQueue.ListenAddressModels;
+﻿using Aiursoft.Pylon.Exceptions;
+using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Models.MessageQueue.ChannelAddressModels;
+using Aiursoft.Pylon.Models.MessageQueue.ChannelViewModels;
+using Aiursoft.Pylon.Models.MessageQueue.ListenAddressModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Services.ToMessageQueueServer
+namespace Aiursoft.Pylon.Services.ToMessageQueueServer
 {
     public class ChannelService
     {

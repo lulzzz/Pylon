@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Models
+namespace Aiursoft.Pylon.Models
 {
     public interface IPusher<T>
     {

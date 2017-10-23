@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Services
+namespace Aiursoft.Pylon.Services
 {
     public static class StringOperation
     {

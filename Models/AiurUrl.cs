@@ -5,7 +5,7 @@ using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace AiursoftBase.Models
+namespace Aiursoft.Pylon.Models
 {
     public class AiurUrl
     {

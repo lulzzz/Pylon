@@ -1,13 +1,13 @@
-﻿using AiursoftBase.Exceptions;
-using AiursoftBase.Services;
-using AiursoftBase.Services.ToAPIServer;
+﻿using Aiursoft.Pylon.Exceptions;
+using Aiursoft.Pylon.Services;
+using Aiursoft.Pylon.Services.ToAPIServer;
 using Microsoft.AspNetCore.Builder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AiursoftBase
+namespace Aiursoft.Pylon
 {
     public static class Values
     {

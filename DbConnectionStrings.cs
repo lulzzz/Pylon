@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AiursoftBase
+namespace Aiursoft.Pylon
 {
     public static class DbConnectionStrings
     {
