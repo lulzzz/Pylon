@@ -8,7 +8,7 @@ Current version: `0.1.0`
 
 The Pylon is the Protoss supply building and the primary source of the Psionic Matrix power field. After warping in, the Pylon is surrounded by a circular field of the Psionic Matrix, providing power to nearby structures and enabling units to warp in on demand from Warp Gates within a radius of 6.5. Each Pylon also provides 8 Psi supply points.
 
-## Where these code works
+## Where this project runs
 
 Pylon is the place where shared code located for Aiursoft web apps.
 
