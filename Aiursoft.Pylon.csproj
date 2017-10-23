@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-  <Version>0.0.4</Version>
+  <Version>0.1.0</Version>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Aiursoft.Pylon</AssemblyName>
     <PackageId>Aiursoft.Pylon</PackageId>
     <Company>Aiursoft</Company>
-    <Product>AiursoftBWeb</Product>
+    <Product>AiursoftWeb</Product>
     <Authors>Anduin</Authors>
     <Description>The base class, interfaces and services for Aiursoft web apps.</Description>
   </PropertyGroup>
