@@ -18,4 +18,8 @@ These shared code contains base classes, interfaces and services.
 
 Excute:
 
-`Install-Package Aiursoft.Pylon -Version 0.0.4`
+`> Install-Package Aiursoft.Pylon -Version 0.1.0`
+
+Or:
+
+`> dotnet add package Aiursoft.Pylon --version 0.1.0`
