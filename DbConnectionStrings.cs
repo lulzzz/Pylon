@@ -21,7 +21,7 @@ namespace Aiursoft.Pylon
             {
                 Console.WriteLine("Using production database!");
                 service.AddDbContext<T>(options =>
-                    options.UseSqlServer($"Data Source=aiurserver.aiursoft.com;Initial Catalog={dbName};Integrated Security=True"));
+                    options.UseSqlServer($"Data Source=server.aiursoft.com;Initial Catalog={dbName};Integrated Security=True"));
             }
         }
     }
