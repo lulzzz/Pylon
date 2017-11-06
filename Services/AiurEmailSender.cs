@@ -19,6 +19,7 @@ namespace Aiursoft.Pylon.Services
             mailMessage.To.Add(target);
             mailMessage.Body = content;
             mailMessage.Subject = subject;
+            mailMessage.IsBodyHtml = true;
             await Task.Factory.StartNew(() => client.Send(mailMessage));
         }
     }
