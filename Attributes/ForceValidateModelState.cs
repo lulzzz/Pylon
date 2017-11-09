@@ -20,7 +20,7 @@ namespace Aiursoft.Pylon.Attributes
                 var arg = new AiurProtocal
                 {
                     code = ErrorType.InvalidInput,
-                    message = "Input not valid!"
+                    message = controller.ModelState.First().Value
                 };
                 context.Result = new JsonResult(arg);
             }

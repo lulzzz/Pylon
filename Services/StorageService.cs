@@ -13,7 +13,7 @@ namespace Aiursoft.Pylon.Services
 {
     public static class StorageService
     {
-        public static async Task<string> SaveLocally(IFormFile File, SaveFileOptions options = SaveFileOptions.RandomName)
+        public static async Task<string> SaveLocally(IFormFile File, SaveFileOptions options = SaveFileOptions.RandomName, string name = "")
         {
             string directoryPath = GetCurrentDirectory() + DirectorySeparatorChar + $@"Storage" + DirectorySeparatorChar;
             if (Exists(directoryPath) == false)
@@ -25,18 +25,22 @@ namespace Aiursoft.Pylon.Services
             {
                 localFilePath = directoryPath + StringOperation.RandomString(10) + GetExtension(File.FileName);
             }
+            else if (options == SaveFileOptions.SourceName)
+            {
+                localFilePath = directoryPath + File.FileName.Replace(" ", "_");
+            }
             else
             {
-                localFilePath = directoryPath + File.FileName.Replace(" ","_");
+                localFilePath = directoryPath + name;
             }
             var fileStream = new FileStream(localFilePath, FileMode.Create);
             await File.CopyToAsync(fileStream);
             fileStream.Close();
             return localFilePath;
         }
-        public static async Task<string> SaveToOSS(IFormFile File, int BucketId, SaveFileOptions options = SaveFileOptions.RandomName, string AccessToken = null)
+        public static async Task<string> SaveToOSS(IFormFile File, int BucketId, SaveFileOptions options = SaveFileOptions.RandomName, string AccessToken = null, string name = "")
         {
-            string localFilePath = await SaveLocally(File, options);
+            string localFilePath = await SaveLocally(File, options, name);
             if (AccessToken == null)
             {
                 AccessToken = await AppsContainer.AccessToken()();
@@ -48,6 +52,7 @@ namespace Aiursoft.Pylon.Services
     public enum SaveFileOptions
     {
         RandomName,
-        SourceName
+        SourceName,
+        TargetName
     }
 }
