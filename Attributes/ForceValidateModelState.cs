@@ -2,6 +2,7 @@
 using Aiursoft.Pylon.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,18 @@ namespace Aiursoft.Pylon.Attributes
             var controller = context.Controller as Controller;
             if (!controller.ModelState.IsValid)
             {
-                var arg = new AiurProtocal
+                var list = new List<string>();
+                foreach (var value in controller.ModelState)
+                {
+                    foreach (var error in value.Value.Errors)
+                    {
+                        list.Add(error.ErrorMessage);
+                    }
+                }
+                var arg = new AiurCollection<string>(list)
                 {
                     code = ErrorType.InvalidInput,
-                    message = controller.ModelState.First().Value
+                    message = "Your input contains several errors!"
                 };
                 context.Result = new JsonResult(arg);
             }
