@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/AiursoftWeb/Pylon.svg?branch=master)](https://travis-ci.org/AiursoftWeb/Pylon)
 
-Current version: `0.1.0`
+Current version: `0.3.0`
 
 ## What is Pylon
 
@@ -23,3 +23,25 @@ Excute:
 Or:
 
 `> dotnet add package Aiursoft.Pylon --version 0.1.0`
+
+
+## How to publish
+
+Please excuse the following commands in the project folder:
+
+    dotnet restore
+    dotnet pack
+
+## What is the relationship with other Aiursoft apps
+
+To produce strong-type API access between Aiursoft services, Aiursoft.Pylon produce all method for all resetful-APIs.
+
+**Pylon did not implement any API!**
+
+## How to contribute
+
+There are many ways to contribute to the project: logging bugs, submitting pull requests, reporting issues, and creating suggestions.
+
+Even if you have push rights on the repository, you should create a personal fork and create feature branches there when you need them. This keeps the main repository clean and your personal workflow cruft out of sight.
+
+We're also interested in your feedback for the future of this project. You can submit a suggestion or feature request through the issue tracker. To make this process more effective, we're asking that these include more information to help define them more clearly.
