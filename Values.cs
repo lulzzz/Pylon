@@ -35,12 +35,13 @@ namespace Aiursoft.Pylon
         public static string ForumServerAddress { get; private set; } = Schema + "://forum." + Domain;
         public static string KahlaServerAddress { get; private set; } = Schema + "://kahla.server." + Domain;
         public static string KahlaAddress { get; private set; } = Schema + "://kahla" + Domain;
+        public static string CompanyAddress { get; private set; } = Schema + "://company." + Domain;
         public static string KahlaAppAddress { get; private set; } = Schema + "://kahla.app." + Domain;
         public static string CurrentAppId { get; private set; } = string.Empty;
         public static string CurrentAppSecret { get; private set; } = string.Empty;
         public static int AppsIconBucketId { get; set; } = 1;
         public static int UsersIconBucketId { get; set; } = 2;
-        public static int KahlaFileBucketId { get; set; } = 6;
+        // public static int KahlaFileBucketId { get; set; } = 6;
         public static KeyValuePair<string, string> directShowString => new KeyValuePair<string, string>("show", "direct");
 
         public static CultureInfo[] GetSupportedLanguages()
@@ -74,7 +75,7 @@ namespace Aiursoft.Pylon
             return app;
         }
 
-        public static IApplicationBuilder UseAiursoftAuthentication(this IApplicationBuilder app, string appId, string appSecret, string ServerAddress = "")
+        public static IApplicationBuilder UseAiursoftAuthentication(this IApplicationBuilder app, string appId, string appSecret)
         {
             if (string.IsNullOrWhiteSpace(appId))
             {
@@ -83,10 +84,6 @@ namespace Aiursoft.Pylon
             if (string.IsNullOrWhiteSpace(appSecret))
             {
                 throw new InvalidOperationException(nameof(appSecret));
-            }
-            if (!string.IsNullOrWhiteSpace(ServerAddress))
-            {
-                ApiServerAddress = ServerAddress;
             }
             CurrentAppId = appId;
             CurrentAppSecret = appSecret;
