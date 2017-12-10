@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Configuration;
 
 namespace Aiursoft.Pylon
 {
@@ -39,6 +42,37 @@ namespace Aiursoft.Pylon
         public static int UsersIconBucketId { get; set; } = 2;
         public static int KahlaFileBucketId { get; set; } = 6;
         public static KeyValuePair<string, string> directShowString => new KeyValuePair<string, string>("show", "direct");
+
+        public static CultureInfo[] GetSupportedLanguages()
+        {
+            var SupportedCultures = new CultureInfo[]
+            {
+                new CultureInfo("en"),
+                new CultureInfo("zh")
+            };
+            return SupportedCultures;
+        }
+        public static IApplicationBuilder UseAiursoftAuthenticationFromConfiguration(this IApplicationBuilder app, IConfiguration configuration,string appName = "api")
+        {
+            var AppId = configuration[$"{appName}AppId"];
+            var AppSecret = configuration[$"{appName}AppSecret"];
+            Console.WriteLine($"Got AppId={AppId}, AppSecret={AppSecret}");
+            if (string.IsNullOrWhiteSpace(AppId) || string.IsNullOrWhiteSpace(AppSecret))
+            {
+                throw new InvalidOperationException("Did not get appId and appSecret from configuration!");
+            }
+            return app.UseAiursoftAuthentication(AppId,AppSecret);
+        }
+        public static IApplicationBuilder UseAiursoftSupportedCultures(this IApplicationBuilder app, string defaultLanguage = "en")
+        {
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(defaultLanguage),
+                SupportedCultures = GetSupportedLanguages(),
+                SupportedUICultures = GetSupportedLanguages()
+            });
+            return app;
+        }
 
         public static IApplicationBuilder UseAiursoftAuthentication(this IApplicationBuilder app, string appId, string appSecret, string ServerAddress = "")
         {
