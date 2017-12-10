@@ -6,9 +6,10 @@ namespace Aiursoft.Pylon.Services
 
     public static class UrlConverter
     {
-        private static AiurUrl _GenerateAuthUrl(AiurUrl destination, string state, bool? justTry)
+        private static AiurUrl _GenerateAuthUrl(AiurUrl destination, string state, bool? justTry, bool register)
         {
-            var url = new AiurUrl(Values.ApiServerAddress, "oauth", "authorize", new AuthorizeAddressModel
+            var action = register ? "register" : "authorize";
+            var url = new AiurUrl(Values.ApiServerAddress, "oauth", action, new AuthorizeAddressModel
             {
                 appid = Values.CurrentAppId,
                 redirect_uri = destination.ToString(),
@@ -20,9 +21,9 @@ namespace Aiursoft.Pylon.Services
             return url;
         }
 
-        public static string UrlWithAuth(string serverRoot, string path, bool? justTry)
+        public static string UrlWithAuth(string serverRoot, string path, bool? justTry, bool register)
         {
-            return _GenerateAuthUrl(new AiurUrl(serverRoot, "Auth", "AuthResult", new { }), path, justTry).ToString();
+            return _GenerateAuthUrl(new AiurUrl(serverRoot, "Auth", "AuthResult", new { }), path, justTry, register).ToString();
         }
     }
 }

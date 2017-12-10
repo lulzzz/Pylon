@@ -15,7 +15,7 @@ namespace Aiursoft.Pylon.Attributes
         private string _preferAction { get; set; } = null;
         private bool? _justTry { get; set; } = false;
         private bool _PreferPageSet { get; set; } = false;
-
+        private bool _register { get; set; } = false;
 
         private bool _hasAPreferPage => (true
             && !string.IsNullOrEmpty(_preferController)
@@ -39,12 +39,13 @@ namespace Aiursoft.Pylon.Attributes
 
         }
 
-        public AiurForceAuth(string preferController, string preferAction, bool justTry)
+        public AiurForceAuth(string preferController, string preferAction, bool justTry, bool register = false)
         {
             this._preferController = preferController;
             this._preferAction = preferAction;
             this._justTry = justTry ? true as bool? : null;
             this._PreferPageSet = true;
+            this._register = register;
         }
         public override void OnActionExecuting(ActionExecutingContext context)
         {
@@ -56,15 +57,17 @@ namespace Aiursoft.Pylon.Attributes
             {
                 if (_hasAPreferPage)
                 {
+                    // Just redirected back.
                     if (show == Values.directShowString.Value && _justTry == true)
                     {
                         return;
                     }
-                    context.Result = _Redirect(context, _preferPage, _justTry);
+                    // Try him.
+                    context.Result = _Redirect(context, _preferPage, _justTry, _register);
                 }
                 else
                 {
-                    context.Result = _Redirect(context, controller.Request.Path.Value, null);
+                    context.Result = _Redirect(context, controller.Request.Path.Value, null, _register);
                 }
             }
             //Signed in, let him go to prefered page directly.
@@ -79,11 +82,11 @@ namespace Aiursoft.Pylon.Attributes
             }
         }
 
-        private RedirectResult _Redirect(ActionExecutingContext context, string page, bool? justTry)
+        private RedirectResult _Redirect(ActionExecutingContext context, string page, bool? justTry, bool register)
         {
             var r = context.HttpContext.Request;
             string serverPosition = $"{r.Scheme}://{r.Host}";
-            string url = UrlConverter.UrlWithAuth(serverPosition, page, justTry);
+            string url = UrlConverter.UrlWithAuth(serverPosition, page, justTry, register);
             return new RedirectResult(url);
         }
     }

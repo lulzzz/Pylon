@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/AiursoftWeb/Pylon.svg?branch=master)](https://travis-ci.org/AiursoftWeb/Pylon)
 
-Current version: `0.3.0`
+Current version: `0.4.0`
 
 ## What is Pylon
 
