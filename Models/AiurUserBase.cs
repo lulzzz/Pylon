@@ -21,10 +21,13 @@ namespace Aiursoft.Pylon.Models
             this.PreferedLanguage = model.User.PreferedLanguage;
             this.HeadImgUrl = model.User.HeadImgUrl;
             this.AccountCreateTime = model.User.AccountCreateTime;
+            this.Email = model.User.Email;
         }
 
         [JsonProperty]
         public override string Id { get => base.Id; set => base.Id = value; }
+        [JsonProperty]
+        public override string Email { get => base.Email; set => base.Email = value; }
         [JsonProperty]
         public virtual string NickName { get; set; }
         [JsonProperty]

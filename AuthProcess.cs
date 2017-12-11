@@ -29,7 +29,8 @@ namespace Aiursoft.Pylon
                     HeadImgUrl = userinfo.User.HeadImgUrl,
                     UserName = userinfo.User.Id,
                     PreferedLanguage = userinfo.User.PreferedLanguage,
-                    AccountCreateTime = userinfo.User.AccountCreateTime
+                    AccountCreateTime = userinfo.User.AccountCreateTime,
+                    Email = userinfo.User.Email
                 };
                 var result = await userManager.CreateAsync(current);
             }
