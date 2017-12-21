@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Aiursoft.Pylon.Services.ToOSSServer
 {
-    public class ApiService
+    public static class ApiService
     {
         public static async Task<AiurProtocal> DeleteAppAsync(string AccessToken, string AppId)
         {

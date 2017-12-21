@@ -26,6 +26,10 @@ namespace Aiursoft.Pylon.Models.OSS
         [JsonIgnore]
         public Bucket BelongingBucket { get; set; }
 
+
+        [InverseProperty(nameof(Secret.File))]
+        public IEnumerable<Secret> Secrets { get; set; }
+
         private string _internetPath { get; set; } = null;
         [NotMapped]
         [JsonProperty(PropertyName = nameof(GetInternetPath))]
