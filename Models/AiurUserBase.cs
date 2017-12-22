@@ -29,6 +29,8 @@ namespace Aiursoft.Pylon.Models
         [JsonProperty]
         public override string Email { get => base.Email; set => base.Email = value; }
         [JsonProperty]
+        public virtual string Bio { get; set; }
+        [JsonProperty]
         public virtual string NickName { get; set; }
         [JsonProperty]
         public virtual string Sex { get; set; }
