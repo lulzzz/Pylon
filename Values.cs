@@ -37,57 +37,11 @@ namespace Aiursoft.Pylon
         public static string KahlaAddress { get; private set; } = Schema + "://kahla" + Domain;
         public static string CompanyAddress { get; private set; } = Schema + "://company." + Domain;
         public static string KahlaAppAddress { get; private set; } = Schema + "://kahla.app." + Domain;
-        public static string CurrentAppId { get; private set; } = string.Empty;
-        public static string CurrentAppSecret { get; private set; } = string.Empty;
         public static int AppsIconBucketId { get; set; } = 1;
         public static int UsersIconBucketId { get; set; } = 2;
-        // public static int KahlaFileBucketId { get; set; } = 6;
+        public static string GitHubOrganizationAddress { get; private set; } = "https://github.com/AiursoftWeb/";
+        public static string FacebookAddress { get; private set; } = "https://facebook.com/";
+        public static string TwitterAddress { get; private set; } = "https://twitter.com/";
         public static KeyValuePair<string, string> directShowString => new KeyValuePair<string, string>("show", "direct");
-
-        public static CultureInfo[] GetSupportedLanguages()
-        {
-            var SupportedCultures = new CultureInfo[]
-            {
-                new CultureInfo("en"),
-                new CultureInfo("zh")
-            };
-            return SupportedCultures;
-        }
-        public static IApplicationBuilder UseAiursoftAuthenticationFromConfiguration(this IApplicationBuilder app, IConfiguration configuration,string appName = "api")
-        {
-            var AppId = configuration[$"{appName}AppId"];
-            var AppSecret = configuration[$"{appName}AppSecret"];
-            Console.WriteLine($"Got AppId={AppId}, AppSecret={AppSecret}");
-            if (string.IsNullOrWhiteSpace(AppId) || string.IsNullOrWhiteSpace(AppSecret))
-            {
-                throw new InvalidOperationException("Did not get appId and appSecret from configuration!");
-            }
-            return app.UseAiursoftAuthentication(AppId,AppSecret);
-        }
-        public static IApplicationBuilder UseAiursoftSupportedCultures(this IApplicationBuilder app, string defaultLanguage = "en")
-        {
-            app.UseRequestLocalization(new RequestLocalizationOptions
-            {
-                DefaultRequestCulture = new RequestCulture(defaultLanguage),
-                SupportedCultures = GetSupportedLanguages(),
-                SupportedUICultures = GetSupportedLanguages()
-            });
-            return app;
-        }
-
-        public static IApplicationBuilder UseAiursoftAuthentication(this IApplicationBuilder app, string appId, string appSecret)
-        {
-            if (string.IsNullOrWhiteSpace(appId))
-            {
-                throw new InvalidOperationException(nameof(appId));
-            }
-            if (string.IsNullOrWhiteSpace(appSecret))
-            {
-                throw new InvalidOperationException(nameof(appSecret));
-            }
-            CurrentAppId = appId;
-            CurrentAppSecret = appSecret;
-            return app;
-        }
     }
 }

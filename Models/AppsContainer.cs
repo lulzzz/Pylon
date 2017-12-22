@@ -30,7 +30,7 @@ namespace Aiursoft.Pylon.Models
 
         public static Func<Task<string>> AccessToken()
         {
-            return AccessToken(Values.CurrentAppId, Values.CurrentAppSecret);
+            return AccessToken(Middlewares.CurrentAppId, Middlewares.CurrentAppSecret);
         }
 
         public static Func<Task<string>> AccessToken(string AppId, string AppSecret)

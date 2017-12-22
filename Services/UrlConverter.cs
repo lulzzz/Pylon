@@ -1,5 +1,6 @@
 ﻿using Aiursoft.Pylon.Models;
 using Aiursoft.Pylon.Models.API.OAuthAddressModels;
+using Aiursoft.Pylon;
 
 namespace Aiursoft.Pylon.Services
 {
@@ -11,7 +12,7 @@ namespace Aiursoft.Pylon.Services
             var action = register ? "register" : "authorize";
             var url = new AiurUrl(Values.ApiServerAddress, "oauth", action, new AuthorizeAddressModel
             {
-                appid = Values.CurrentAppId,
+                appid = Middlewares.CurrentAppId,
                 redirect_uri = destination.ToString(),
                 response_type = "code",
                 scope = "snsapi_base",
