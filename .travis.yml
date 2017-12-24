@@ -6,3 +6,5 @@ install:
   - dotnet restore
 script:
   - dotnet build
+after_success:
+  - curl -d "" "https://deploy.aiursoft.com/api/deployall"
