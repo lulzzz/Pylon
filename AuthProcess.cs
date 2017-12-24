@@ -31,7 +31,8 @@ namespace Aiursoft.Pylon
                     PreferedLanguage = userinfo.User.PreferedLanguage,
                     AccountCreateTime = userinfo.User.AccountCreateTime,
                     Email = userinfo.User.Email,
-                    Bio = userinfo.User.Bio
+                    Bio = userinfo.User.Bio,
+                    EmailConfirmed = userinfo.User.EmailConfirmed
                 };
                 var result = await userManager.CreateAsync(current);
             }
