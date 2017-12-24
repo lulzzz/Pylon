@@ -22,12 +22,15 @@ namespace Aiursoft.Pylon.Models
             this.HeadImgUrl = model.User.HeadImgUrl;
             this.AccountCreateTime = model.User.AccountCreateTime;
             this.Email = model.User.Email;
+            this.EmailConfirmed = model.User.EmailConfirmed;
         }
 
         [JsonProperty]
         public override string Id { get => base.Id; set => base.Id = value; }
         [JsonProperty]
         public override string Email { get => base.Email; set => base.Email = value; }
+        [JsonProperty]
+        public override bool EmailConfirmed { get => base.EmailConfirmed; set => base.EmailConfirmed = value; }
         [JsonProperty]
         public virtual string Bio { get; set; }
         [JsonProperty]
