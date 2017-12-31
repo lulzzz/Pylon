@@ -22,6 +22,7 @@ namespace Aiursoft.Pylon.Models
             this.HeadImgUrl = model.User.HeadImgUrl;
             this.AccountCreateTime = model.User.AccountCreateTime;
             this.Email = model.User.Email;
+            this.Bio = model.User.Bio;
             this.EmailConfirmed = model.User.EmailConfirmed;
         }
 
