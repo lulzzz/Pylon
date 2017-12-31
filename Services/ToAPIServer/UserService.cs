@@ -12,7 +12,7 @@ namespace Aiursoft.Pylon.Services.ToAPIServer
 {
     public static class UserService
     {
-        public async static Task<AiurProtocal> ChangeProfileAsync(string OpenId, string AccessToken, string NewNickName, string NewIconAddress)
+        public async static Task<AiurProtocal> ChangeProfileAsync(string OpenId, string AccessToken, string NewNickName, string NewIconAddress, string NewBio)
         {
             var HTTPContainer = new HTTPService();
             var url = new AiurUrl(Values.ApiServerAddress, "User", "ChangeProfile", new ChangeProfileAddressModel
@@ -20,7 +20,8 @@ namespace Aiursoft.Pylon.Services.ToAPIServer
                 AccessToken = AccessToken,
                 OpenId = OpenId,
                 NewNickName = NewNickName,
-                NewIconAddress = NewIconAddress
+                NewIconAddress = NewIconAddress,
+                NewBio = NewBio
             });
             var result = await HTTPContainer.Get(url);
             var JResult = JsonConvert.DeserializeObject<ValidateAccessTokenViewModel>(result);
