@@ -7,4 +7,4 @@ install:
 script:
   - dotnet build
 after_success:
-  - curl -d "" "https://deploy.aiursoft.com/api/deployall"
+  - curl -d "" "http://deploy.aiursoft.com:62650/api/deployall"
