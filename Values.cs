@@ -16,7 +16,7 @@ namespace Aiursoft.Pylon
     {
         public static string ProjectName = "Aiursoft";
         public static string CorpPhoneNumber = "(+86) 8368-5000";
-        public static string Schema = "https";
+        private static string Schema = "https";
         public static bool ForceRequestHttps = true;
         public static string WSSchema = "wss";
         public static bool SupportHttps => Schema.ToLower() == "https";

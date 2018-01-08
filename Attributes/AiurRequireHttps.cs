@@ -12,6 +12,7 @@ namespace Aiursoft.Pylon.Attributes
         {
             if (Values.SupportHttps && Values.ForceRequestHttps)
             {
+                filterContext.HttpContext.Response.Headers.Add("Strict-Transport-Security","max-age=15552001; includeSubDomains; preload");
                 base.OnAuthorization(filterContext);
             }
         }
