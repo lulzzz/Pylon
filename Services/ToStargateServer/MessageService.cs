@@ -1,4 +1,4 @@
-﻿using Aiursoft.Pylon.Exceptions;
+using Aiursoft.Pylon.Exceptions;
 using Aiursoft.Pylon.Models;
 using Aiursoft.Pylon.Models.Stargate.MessageAddressModels;
 using Newtonsoft.Json;
