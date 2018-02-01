@@ -17,7 +17,6 @@ namespace Aiursoft.Pylon
         {
             var openId = await OAuthService.CodeToOpenIdAsync(model.code, await AppsContainer.AccessToken()());
             var userinfo = await OAuthService.OpenIdToUserInfo(AccessToken: await AppsContainer.AccessToken()(), openid: openId.openid);
-
             var current = await userManager.FindByIdAsync(userinfo.User.Id);
             if (current == null)
             {
