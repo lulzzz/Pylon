@@ -25,6 +25,7 @@ namespace Aiursoft.Pylon
             };
             return SupportedCultures;
         }
+	// This is a method
         public static IApplicationBuilder UseAiursoftAuthenticationFromConfiguration(this IApplicationBuilder app, IConfiguration configuration, string appName = "api")
         {
             var AppId = configuration[$"{appName}AppId"];
