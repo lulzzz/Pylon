@@ -10,7 +10,6 @@ namespace Aiursoft.Pylon.Services
 {
     public static class StringOperation
     {
-        public static string WebContentRoot { get; set; }
         private static string GetMd5Hash(MD5 md5Hash, string input)
         {
             var data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));

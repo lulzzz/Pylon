@@ -18,8 +18,8 @@ namespace Aiursoft.Pylon.Models
         {
             this.NickName = model.User.NickName;
             this.Sex = model.User.Sex;
-            this.PreferedLanguage = model.User.PreferedLanguage;
             this.HeadImgUrl = model.User.HeadImgUrl;
+            this.PreferedLanguage = model.User.PreferedLanguage;
             this.AccountCreateTime = model.User.AccountCreateTime;
             this.Email = model.User.Email;
             this.Bio = model.User.Bio;
