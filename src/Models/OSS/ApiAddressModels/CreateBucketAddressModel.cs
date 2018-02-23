@@ -15,6 +15,7 @@ namespace Aiursoft.Pylon.Models.OSS.ApiAddressModels
         [MaxLength(25)]
         [MinLength(5)]
         [NoSpace]
+        [NoDot]
         public string BucketName { get; set; }
         public bool OpenToRead { get; set; }
         public bool OpenToUpload { get; set; }

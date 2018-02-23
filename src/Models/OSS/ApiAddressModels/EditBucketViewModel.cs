@@ -15,6 +15,7 @@ namespace Aiursoft.Pylon.Models.OSS.ApiAddressModels
         public int BucketId { get; set; }
         [Required]
         [NoSpace]
+        [NoDot]
         public string NewBucketName { get; set; }
         public bool OpenToRead { get; set; }
         public bool OpenToUpload { get; set; }
