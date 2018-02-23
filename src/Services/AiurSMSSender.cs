@@ -10,15 +10,15 @@ namespace Aiursoft.Pylon.Services
 {
     public class AiurSMSSender
     {
-        public string SMSAccountIdentification { get; set; }
-        public string SMSAccountPassword { get; set; }
+        public static string SMSAccountIdentification { get; set; }
+        public static string SMSAccountPassword { get; set; }
         public static string SMSAccountFrom { get; set; }
         public AiurSMSSender()
         {
 
         }
 
-        public Task<MessageResource> Send(string number, string message)
+        public Task<MessageResource> SendAsync(string number, string message)
         {
             TwilioClient.Init(SMSAccountIdentification, SMSAccountPassword);
             return MessageResource.CreateAsync(
