@@ -24,7 +24,7 @@ namespace Aiursoft.Pylon.Services.ToAPIServer
                 NewBio = NewBio
             });
             var result = await HTTPContainer.Get(url);
-            var JResult = JsonConvert.DeserializeObject<ValidateAccessTokenViewModel>(result);
+            var JResult = JsonConvert.DeserializeObject<AiurProtocal>(result);
 
             if (JResult.code != ErrorType.Success)
                 throw new AiurUnexceptedResponse(JResult);
@@ -42,8 +42,23 @@ namespace Aiursoft.Pylon.Services.ToAPIServer
                 NewPassword = NewPassword
             });
             var result = await HTTPContainer.Get(url);
-            var JResult = JsonConvert.DeserializeObject<ValidateAccessTokenViewModel>(result);
+            var JResult = JsonConvert.DeserializeObject<AiurProtocal>(result);
 
+            if (JResult.code != ErrorType.Success && JResult.code != ErrorType.WrongKey)
+                throw new AiurUnexceptedResponse(JResult);
+            return JResult;
+        }
+        public async static Task<AiurProtocal> SetPhoneNumberAsync(string OpenId, string AccessToken, string PhoneNumber)
+        {
+            var HTTPContainer = new HTTPService();
+            var url = new AiurUrl(Values.ApiServerAddress, "User", "SetPhonNumber", new SetPhoneNumberAddressModel
+            {
+                AccessToken = AccessToken,
+                OpenId = OpenId,
+                Phone = PhoneNumber
+            });
+            var result = await HTTPContainer.Get(url);
+            var JResult = JsonConvert.DeserializeObject<AiurProtocal>(result);
             if (JResult.code != ErrorType.Success && JResult.code != ErrorType.WrongKey)
                 throw new AiurUnexceptedResponse(JResult);
             return JResult;
