@@ -24,6 +24,8 @@ namespace Aiursoft.Pylon.Models
             this.Email = model.User.Email;
             this.Bio = model.User.Bio;
             this.EmailConfirmed = model.User.EmailConfirmed;
+            this.PhoneNumber = model.User.PhoneNumber;
+            this.PhoneNumberConfirmed = model.User.PhoneNumberConfirmed;
         }
 
         [JsonProperty]
@@ -32,6 +34,10 @@ namespace Aiursoft.Pylon.Models
         public override string Email { get => base.Email; set => base.Email = value; }
         [JsonProperty]
         public override bool EmailConfirmed { get => base.EmailConfirmed; set => base.EmailConfirmed = value; }
+        [JsonProperty]
+        public override string PhoneNumber { get => base.PhoneNumber; set => base.PhoneNumber = value; }
+        [JsonProperty]
+        public override bool PhoneNumberConfirmed { get => base.PhoneNumberConfirmed; set => base.PhoneNumberConfirmed = value; }
         [JsonProperty]
         public virtual string Bio { get; set; }
         [JsonProperty]
