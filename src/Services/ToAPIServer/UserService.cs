@@ -51,7 +51,7 @@ namespace Aiursoft.Pylon.Services.ToAPIServer
         public async static Task<AiurProtocal> SetPhoneNumberAsync(string OpenId, string AccessToken, string PhoneNumber)
         {
             var HTTPContainer = new HTTPService();
-            var url = new AiurUrl(Values.ApiServerAddress, "User", "SetPhonNumber", new SetPhoneNumberAddressModel
+            var url = new AiurUrl(Values.ApiServerAddress, "User", "SetPhoneNumber", new SetPhoneNumberAddressModel
             {
                 AccessToken = AccessToken,
                 OpenId = OpenId,
