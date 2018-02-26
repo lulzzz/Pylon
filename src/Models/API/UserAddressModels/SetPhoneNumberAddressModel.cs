@@ -9,8 +9,6 @@ namespace Aiursoft.Pylon.Models.API.UserAddressModels
     {
         [Required]
         public string OpenId { get; set; }
-        [Required]
-        [Phone]
         public string Phone { get; set; }
     }
 }
