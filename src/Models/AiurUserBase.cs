@@ -2,6 +2,7 @@
 using Aiursoft.Pylon.Models.API.OAuthViewModels;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Aiursoft.Pylon.Models
 {
@@ -25,7 +26,6 @@ namespace Aiursoft.Pylon.Models
             this.Bio = model.User.Bio;
             this.EmailConfirmed = model.User.EmailConfirmed;
             this.PhoneNumber = model.User.PhoneNumber;
-            this.PhoneNumberConfirmed = model.User.PhoneNumberConfirmed;
         }
 
         [JsonProperty]
@@ -36,8 +36,9 @@ namespace Aiursoft.Pylon.Models
         public override bool EmailConfirmed { get => base.EmailConfirmed; set => base.EmailConfirmed = value; }
         [JsonProperty]
         public override string PhoneNumber { get => base.PhoneNumber; set => base.PhoneNumber = value; }
+        [NotMapped]
         [JsonProperty]
-        public override bool PhoneNumberConfirmed { get => base.PhoneNumberConfirmed; set => base.PhoneNumberConfirmed = value; }
+        public override bool PhoneNumberConfirmed { get => !string.IsNullOrEmpty(PhoneNumber); }
         [JsonProperty]
         public virtual string Bio { get; set; }
         [JsonProperty]
