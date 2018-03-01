@@ -22,7 +22,9 @@ namespace Aiursoft.Pylon.Services
                 fileStream.Close();
             }
             memory.Position = 0;
-            return controller.File(memory, MIME.GetContentType(extension, download), filename, fileInfo.LastWriteTime, new EntityTagHeaderValue("tag"));
+            return controller.File(memory, MIME.GetContentType(extension, download), filename);
+#warning You did not use etag cache!
+            //return controller.File(memory, MIME.GetContentType(extension, download), filename, fileInfo.LastWriteTime, new EntityTagHeaderValue("tag"));
         }
     }
 }
