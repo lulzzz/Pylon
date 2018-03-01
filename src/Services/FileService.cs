@@ -15,7 +15,7 @@ namespace Aiursoft.Pylon.Services
         {
             var memory = new MemoryStream();
             var fileInfo = new FileInfo(path);
-            var extension = fileInfo.Extension.ToLower().Trim('.');
+            var extension = filename.Substring(filename.LastIndexOf('.') + 1);
             using (var fileStream = File.OpenRead(path))
             {
                 await fileStream.CopyToAsync(memory);
