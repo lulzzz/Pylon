@@ -7,7 +7,17 @@ namespace Aiursoft.Pylon.Models
 {
     public class MIME
     {
-        public static readonly Dictionary<string, string> MIMETypesDictionary = new Dictionary<string, string>
+        public static string GetContentType(string extenstion, bool download)
+        {
+            string lower = extenstion.ToLower();
+            //Not to download the file, and we can process the file, let us process it.
+            if (!download || MIMETypesDictionary.ContainsKey(lower))
+            {
+                return MIMETypesDictionary[lower];
+            }
+            return "application/octet-stream";
+        }
+        private static readonly Dictionary<string, string> MIMETypesDictionary = new Dictionary<string, string>
         {
             {"avi", "video/x-msvideo"},
             {"apk","application/vnd.android.package-archive"},
@@ -23,7 +33,7 @@ namespace Aiursoft.Pylon.Models
             {"jpeg", "image/jpeg"},
             {"jpg", "image/jpeg"},
             {"js", "application/x-javascript"},
-            { "map","application/octet-stream "},
+            {"map","text/plain"},
             {"m4a", "audio/mp4a-latm"},
             {"mid", "audio/midi"},
             {"mov", "video/quicktime"},
