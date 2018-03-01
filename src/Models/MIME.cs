@@ -9,10 +9,11 @@ namespace Aiursoft.Pylon.Models
     {
         public static string GetContentType(string extenstion, bool download)
         {
-            string lower = extenstion.ToLower();
+            string lower = extenstion.ToLower().TrimStart('.');
             //Not to download the file, and we can process the file, let us process it.
-            if (!download || MIMETypesDictionary.ContainsKey(lower))
+            if (!download && MIMETypesDictionary.ContainsKey(lower))
             {
+                Console.WriteLine(extenstion);
                 return MIMETypesDictionary[lower];
             }
             return "application/octet-stream";
