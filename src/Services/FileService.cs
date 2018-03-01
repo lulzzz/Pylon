@@ -13,22 +13,24 @@ namespace Aiursoft.Pylon.Services
     {
         public static async Task<FileStreamResult> AiurFile(this ControllerBase controller, string path, string filename, bool download = false)
         {
-            var memory = new MemoryStream();
             var fileInfo = new FileInfo(path);
             var extension = filename.Substring(filename.LastIndexOf('.') + 1);
-            using (var fileStream = File.OpenRead(path))
+            using (var memory = new MemoryStream())
             {
-                await fileStream.CopyToAsync(memory);
-                fileStream.Close();
-            }
-            memory.Position = 0;
-            if (download)
-            {
-                return controller.File(memory, MIME.GetContentType(extension, download), filename);
-            }
-            else
-            {
-                return controller.File(memory, MIME.GetContentType(extension, download));
+                using (var fileStream = File.OpenRead(path))
+                {
+                    await fileStream.CopyToAsync(memory);
+                    fileStream.Close();
+                }
+                memory.Position = 0;
+                if (download)
+                {
+                    return controller.File(memory, MIME.GetContentType(extension, download), filename);
+                }
+                else
+                {
+                    return controller.File(memory, MIME.GetContentType(extension, download));
+                }
             }
 #warning You did not use etag cache!
             //return controller.File(memory, MIME.GetContentType(extension, download), filename, fileInfo.LastWriteTime, new EntityTagHeaderValue("tag"));
