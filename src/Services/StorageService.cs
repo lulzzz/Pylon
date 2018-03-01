@@ -13,7 +13,7 @@ namespace Aiursoft.Pylon.Services
 {
     public static class StorageService
     {
-        public static async Task<string> SaveLocally(IFormFile File, SaveFileOptions options = SaveFileOptions.RandomName, string name = "")
+        public static async Task<string> SaveLocally(IFormFile file, SaveFileOptions options = SaveFileOptions.RandomName, string name = "")
         {
             string directoryPath = GetCurrentDirectory() + DirectorySeparatorChar + $@"Storage" + DirectorySeparatorChar;
             if (Exists(directoryPath) == false)
@@ -23,29 +23,33 @@ namespace Aiursoft.Pylon.Services
             string localFilePath = string.Empty;
             if (options == SaveFileOptions.RandomName)
             {
-                localFilePath = directoryPath + StringOperation.RandomString(10) + GetExtension(File.FileName);
+                localFilePath = directoryPath + StringOperation.RandomString(10) + GetExtension(file.FileName);
             }
             else if (options == SaveFileOptions.SourceName)
             {
-                localFilePath = directoryPath + File.FileName.Replace(" ", "_");
+                localFilePath = directoryPath + file.FileName.Replace(" ", "_");
             }
             else
             {
                 localFilePath = directoryPath + name;
             }
             var fileStream = new FileStream(localFilePath, FileMode.Create);
-            await File.CopyToAsync(fileStream);
+            await file.CopyToAsync(fileStream);
             fileStream.Close();
             return localFilePath;
         }
-        public static async Task<string> SaveToOSS(IFormFile File, int BucketId, SaveFileOptions options = SaveFileOptions.RandomName, string AccessToken = null, string name = "")
+        public static async Task<string> SaveToOSS(IFormFile file, int BucketId, SaveFileOptions options = SaveFileOptions.RandomName, string AccessToken = null, string name = "", bool deleteLocal = true)
         {
-            string localFilePath = await SaveLocally(File, options, name);
+            string localFilePath = await SaveLocally(file, options, name);
             if (AccessToken == null)
             {
                 AccessToken = await AppsContainer.AccessToken()();
             }
             var fileAddress = await ApiService.UploadFile(AccessToken, BucketId, localFilePath);
+            if (deleteLocal)
+            {
+                File.Delete(localFilePath);
+            }
             return fileAddress.Path;
         }
     }
