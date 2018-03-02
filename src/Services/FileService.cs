@@ -15,15 +15,7 @@ namespace Aiursoft.Pylon.Services
         {
             var fileInfo = new FileInfo(path);
             var extension = filename.Substring(filename.LastIndexOf('.') + 1);
-            var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
-
-            //var memory = new MemoryStream();
-            //using (var fileStream = File.OpenRead(path))
-            //{
-            //    await fileStream.CopyToAsync(memory);
-            //    fileStream.Close();
-            //}
-            //memory.Position = 0;
+            var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read, 16 * 1024 * 1024);
             if (download)
             {
                 return controller.File(fileStream, MIME.GetContentType(extension, download), filename);
