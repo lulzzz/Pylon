@@ -15,25 +15,21 @@ namespace Aiursoft.Pylon.Services
         {
             var fileInfo = new FileInfo(path);
             var extension = filename.Substring(filename.LastIndexOf('.') + 1);
-            using (var memory = new MemoryStream())
+            var memory = new MemoryStream();
+            using (var fileStream = File.OpenRead(path))
             {
-                using (var fileStream = File.OpenRead(path))
-                {
-                    await fileStream.CopyToAsync(memory);
-                    fileStream.Close();
-                }
-                memory.Position = 0;
-                if (download)
-                {
-                    return controller.File(memory, MIME.GetContentType(extension, download), filename);
-                }
-                else
-                {
-                    return controller.File(memory, MIME.GetContentType(extension, download));
-                }
+                await fileStream.CopyToAsync(memory);
+                fileStream.Close();
             }
-#warning You did not use etag cache!
-            //return controller.File(memory, MIME.GetContentType(extension, download), filename, fileInfo.LastWriteTime, new EntityTagHeaderValue("tag"));
+            memory.Position = 0;
+            if (download)
+            {
+                return controller.File(memory, MIME.GetContentType(extension, download), filename);
+            }
+            else
+            {
+                return controller.File(memory, MIME.GetContentType(extension, download));
+            }
         }
     }
 }
