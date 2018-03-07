@@ -1,6 +1,7 @@
 ﻿using Aiursoft.Pylon.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,24 +16,32 @@ namespace Aiursoft.Pylon.Services
         {
             var fileInfo = new FileInfo(path);
             var extension = filename.Substring(filename.LastIndexOf('.') + 1);
-            var memory = new MemoryStream();
-            using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+            var file = File.ReadAllBytes(path);
+            //var memory = new MemoryStream();
+            //using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+            //{
+            //    await fileStream.CopyToAsync(memory);
+            //}
+            //memory.Seek(0, SeekOrigin.Begin);
+            //controller.Response.OnCompleted((state) =>
+            //{
+            //    (state as MemoryStream)?.Dispose();
+            //    return Task.CompletedTask;
+            //}, memory);
+            //var content = JsonConvert.SerializeObject(controller.HttpContext.Result);
+            var etag = ETagGenerator.GetETag(controller.Request.Path.ToString(), file);
+            if (controller.Request.Headers.Keys.Contains("If-None-Match") && controller.Request.Headers["If-None-Match"].ToString() == etag)
             {
-                await fileStream.CopyToAsync(memory);
+                return new StatusCodeResult(304);
             }
-            memory.Seek(0, SeekOrigin.Begin);
-            controller.Response.OnCompleted((state) =>
-            {
-                (state as MemoryStream)?.Dispose();
-                return Task.CompletedTask;
-            }, memory);
+            controller.Response.Headers.Add("ETag", new[] { etag });
             if (download)
             {
-                return controller.File(memory, MIME.GetContentType(extension, download), filename);
+                return controller.File(file, MIME.GetContentType(extension, download), filename);
             }
             else
             {
-                return controller.File(memory, MIME.GetContentType(extension, download));
+                return controller.File(file, MIME.GetContentType(extension, download));
             }
         }
     }
