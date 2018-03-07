@@ -21,18 +21,6 @@ namespace Aiursoft.Pylon.Services
             {
                 file = File.ReadAllBytes(path);
             });
-            //var memory = new MemoryStream();
-            //using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
-            //{
-            //    await fileStream.CopyToAsync(memory);
-            //}
-            //memory.Seek(0, SeekOrigin.Begin);
-            //controller.Response.OnCompleted((state) =>
-            //{
-            //    (state as MemoryStream)?.Dispose();
-            //    return Task.CompletedTask;
-            //}, memory);
-            //var content = JsonConvert.SerializeObject(controller.HttpContext.Result);
             var etag = ETagGenerator.GetETag(controller.Request.Path.ToString(), file);
             controller.Response.Headers.Add("ETag", etag);
             if (controller.Request.Headers.Keys.Contains("If-None-Match") && controller.Request.Headers["If-None-Match"].ToString() == etag)
