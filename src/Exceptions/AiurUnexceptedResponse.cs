@@ -13,5 +13,6 @@ namespace Aiursoft.Pylon.Exceptions
         {
             this.Response = response;
         }
+        public override string Message => Response.message;
     }
 }
