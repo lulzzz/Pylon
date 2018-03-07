@@ -16,7 +16,6 @@ namespace Aiursoft.Pylon.Services
 
         public async Task<string> Get(AiurUrl Url)
         {
-            var retString = string.Empty;
             var request = WebRequest.CreateHttp(Url.ToString());
             request.CookieContainer = CC;
             request.Method = "GET";
@@ -25,7 +24,6 @@ namespace Aiursoft.Pylon.Services
         }
         public async Task<string> Post(AiurUrl Url, AiurUrl postDataStr)
         {
-            var retString = string.Empty;
             var request = WebRequest.CreateHttp(Url.ToString());
             request.CookieContainer = CC;
             request.Method = "POST";
