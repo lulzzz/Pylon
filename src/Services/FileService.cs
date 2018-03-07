@@ -16,7 +16,11 @@ namespace Aiursoft.Pylon.Services
         {
             var fileInfo = new FileInfo(path);
             var extension = filename.Substring(filename.LastIndexOf('.') + 1);
-            var file = File.ReadAllBytes(path);
+            byte[] file = null;
+            await Task.Run(() =>
+            {
+                file = File.ReadAllBytes(path);
+            });
             //var memory = new MemoryStream();
             //using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             //{
@@ -30,7 +34,7 @@ namespace Aiursoft.Pylon.Services
             //}, memory);
             //var content = JsonConvert.SerializeObject(controller.HttpContext.Result);
             var etag = ETagGenerator.GetETag(controller.Request.Path.ToString(), file);
-            controller.Response.Headers.Add("ETag", $"\"{etag}\"");
+            controller.Response.Headers.Add("ETag", etag);
             if (controller.Request.Headers.Keys.Contains("If-None-Match") && controller.Request.Headers["If-None-Match"].ToString() == etag)
             {
                 return new StatusCodeResult(304);
