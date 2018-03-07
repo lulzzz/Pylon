@@ -30,11 +30,12 @@ namespace Aiursoft.Pylon.Services
             //}, memory);
             //var content = JsonConvert.SerializeObject(controller.HttpContext.Result);
             var etag = ETagGenerator.GetETag(controller.Request.Path.ToString(), file);
+            controller.Response.Headers.Add("ETag", $"\"{etag}\"");
             if (controller.Request.Headers.Keys.Contains("If-None-Match") && controller.Request.Headers["If-None-Match"].ToString() == etag)
             {
                 return new StatusCodeResult(304);
             }
-            controller.Response.Headers.Add("ETag", new[] { etag });
+            controller.Response.Headers.Add("Content-Length", file.Length.ToString());
             if (download)
             {
                 return controller.File(file, MIME.GetContentType(extension, download), filename);
