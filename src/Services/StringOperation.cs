@@ -25,6 +25,15 @@ namespace Aiursoft.Pylon.Services
             string hash = GetMd5Hash(MD5.Create(), SourceString);
             return hash;
         }
+        public static string GetMD5(this byte[] data)
+        {
+            using (var md5 = MD5.Create())
+            {
+                var hash = md5.ComputeHash(data);
+                string hex = BitConverter.ToString(hash);
+                return hex.Replace("-", "");
+            }
+        }
         public static string OTake(this string source, int Count)
         {
             if (source.Length <= Count)

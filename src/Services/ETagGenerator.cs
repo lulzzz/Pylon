@@ -11,18 +11,7 @@ namespace Aiursoft.Pylon.Services
         {
             var keyBytes = Encoding.UTF8.GetBytes(key);
             var combinedBytes = Combine(keyBytes, contentBytes);
-
-            return GenerateETag(combinedBytes);
-        }
-
-        private static string GenerateETag(byte[] data)
-        {
-            using (var md5 = MD5.Create())
-            {
-                var hash = md5.ComputeHash(data);
-                string hex = BitConverter.ToString(hash);
-                return hex.Replace("-", "");
-            }
+            return combinedBytes.GetMD5();
         }
 
         private static byte[] Combine(byte[] a, byte[] b)

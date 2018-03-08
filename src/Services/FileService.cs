@@ -21,6 +21,11 @@ namespace Aiursoft.Pylon.Services
             {
                 file = File.ReadAllBytes(path);
             });
+            controller.Response.OnCompleted((_) =>
+            {
+                file = null;
+                return Task.CompletedTask;
+            }, null);
             var etag = ETagGenerator.GetETag(controller.Request.Path.ToString(), file);
             controller.Response.Headers.Add("ETag", etag);
             if (controller.Request.Headers.Keys.Contains("If-None-Match") && controller.Request.Headers["If-None-Match"].ToString() == etag)
