@@ -28,7 +28,7 @@ namespace Aiursoft.Pylon.Services
             }
             controller.Response.Headers.Add("Content-Length", fileInfo.Length.ToString());
             //await StreamCopyOperation.CopyToAsync(fileStream, controller.Response.Body, fileInfo.Length, 64 * 1024, controller.HttpContext.RequestAborted);
-            controller.HttpContext.Abort();
+            //controller.HttpContext.Abort();
             return controller.PhysicalFile(path, MIME.GetContentType(extension, download));
             //return controller.File(file, , filename);
         }
