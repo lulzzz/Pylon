@@ -1,4 +1,5 @@
 ﻿using Aiursoft.Pylon.Models;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
@@ -14,33 +15,22 @@ namespace Aiursoft.Pylon.Services
     {
         public static async Task<IActionResult> AiurFile(this ControllerBase controller, string path, string filename, bool download = false)
         {
+            await Task.Delay(0);
             var fileInfo = new FileInfo(path);
+            var fileStream = File.OpenRead(path);
             var extension = filename.Substring(filename.LastIndexOf('.') + 1);
-            byte[] file = null;
-            await Task.Run(() =>
-            {
-                file = File.ReadAllBytes(path);
-            });
-            controller.Response.OnCompleted((_) =>
-            {
-                file = null;
-                return Task.CompletedTask;
-            }, null);
-            var etag = ETagGenerator.GetETag(controller.Request.Path.ToString(), file);
-            controller.Response.Headers.Add("ETag", etag);
-            if (controller.Request.Headers.Keys.Contains("If-None-Match") && controller.Request.Headers["If-None-Match"].ToString() == etag)
+            long etagHash = fileInfo.LastWriteTime.ToUniversalTime().ToFileTime() ^ fileInfo.Length;
+            var _etag = '\"' + Convert.ToString(etagHash, 16) + '\"';
+            controller.Response.Headers.Add("ETag", _etag);
+            if (controller.Request.Headers.Keys.Contains("If-None-Match") && controller.Request.Headers["If-None-Match"].ToString().Trim('"') == _etag)
             {
                 return new StatusCodeResult(304);
             }
-            controller.Response.Headers.Add("Content-Length", file.Length.ToString());
-            if (download)
-            {
-                return controller.File(file, MIME.GetContentType(extension, download), filename);
-            }
-            else
-            {
-                return controller.File(file, MIME.GetContentType(extension, download));
-            }
+            controller.Response.Headers.Add("Content-Length", fileInfo.Length.ToString());
+            //await StreamCopyOperation.CopyToAsync(fileStream, controller.Response.Body, fileInfo.Length, 64 * 1024, controller.HttpContext.RequestAborted);
+            controller.HttpContext.Abort();
+            return controller.PhysicalFile(path, MIME.GetContentType(extension, download));
+            //return controller.File(file, , filename);
         }
     }
 }
