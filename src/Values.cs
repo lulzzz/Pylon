@@ -34,7 +34,7 @@ namespace Aiursoft.Pylon
         public static string WWWServerAddress { get; private set; } = Schema + "://www." + Domain;
         public static string ForumServerAddress { get; private set; } = Schema + "://forum." + Domain;
         public static string KahlaServerAddress { get; private set; } = Schema + "://kahla.server." + Domain;
-        public static string KahlaAddress { get; private set; } = Schema + "://kahla" + Domain;
+        public static string KahlaAddress { get; private set; } = Schema + "://kahla." + Domain;
         public static string CompanyAddress { get; private set; } = Schema + "://company." + Domain;
         public static string KahlaAppAddress { get; private set; } = Schema + "://kahla.app." + Domain;
         public static int AppsIconBucketId { get; set; } = 1;
