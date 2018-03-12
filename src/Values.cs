@@ -19,6 +19,7 @@ namespace Aiursoft.Pylon
         private static string Schema = "https";
         public static bool ForceRequestHttps = true;
         public static string WSSchema = "wss";
+        public static long MaxFileSize = 1000 * 1024 * 1024;
         public static bool SupportHttps => Schema.ToLower() == "https";
         public static string Domain { get; private set; } = "aiursoft.com";
         public static string Empty { get; private set; } = Schema + "://" + Domain;

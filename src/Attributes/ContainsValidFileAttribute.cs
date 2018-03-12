@@ -10,38 +10,37 @@ namespace Aiursoft.Pylon.Attributes
 {
     public class ContainsValidFileAttribute : ActionFilterAttribute
     {
+        private string _ErrorRedirect { get; set; }
+        public ContainsValidFileAttribute(string ErrorRedirect)
+        {
+            _ErrorRedirect = ErrorRedirect;
+        }
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            void ReturnError()
-            {
-                var arg = new AiurProtocal
-                {
-                    code = ErrorType.InvalidInput,
-                    message = "You did not upload a valid file using HTTP Post."
-                };
-                context.Result = new JsonResult(arg);
-                return;
-            }
             base.OnActionExecuting(context);
+            // Not a post method
             if(context.HttpContext.Request.Method.ToUpper().Trim()!="POST")
             {
-                ReturnError();
+                context.Result = new RedirectResult(_ErrorRedirect);
                 return;
             }
+            // No file
             if (context.HttpContext.Request.Form.Files.Count < 1)
             {
-                ReturnError();
+                context.Result = new RedirectResult(_ErrorRedirect);
                 return;
             }
             var file = context.HttpContext.Request.Form.Files.First();
+            // File is null
             if (file == null)
             {
-                ReturnError();
+                context.Result = new RedirectResult(_ErrorRedirect);
                 return;
             }
-            if (file.Length < 1 || file.Length > 1024 * 1024 * 1024)
+            // Not in valid size
+            if (file.Length < 1 || file.Length > Values.MaxFileSize)
             {
-                ReturnError();
+                context.Result = new RedirectResult(_ErrorRedirect);
                 return;
             }
         }
