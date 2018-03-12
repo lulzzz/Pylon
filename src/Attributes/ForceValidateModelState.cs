@@ -14,7 +14,6 @@ namespace Aiursoft.Pylon.Attributes
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            base.OnActionExecuting(context);
             var controller = context.Controller as Controller;
             if (!controller.ModelState.IsValid)
             {
@@ -33,6 +32,7 @@ namespace Aiursoft.Pylon.Attributes
                 };
                 context.Result = new JsonResult(arg);
             }
+            base.OnActionExecuting(context);
         }
     }
 }
