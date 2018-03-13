@@ -22,6 +22,11 @@ namespace Aiursoft.Pylon.Models.OSS
         public int DownloadTimes { get; set; }
 
         public int BucketId { get; set; }
+
+        public DateTime UploadTime { get; set; } = DateTime.Now;
+
+        public int AliveDays { get; set; } = -1;
+
         [ForeignKey(nameof(BucketId))]
         [JsonIgnore]
         public Bucket BelongingBucket { get; set; }

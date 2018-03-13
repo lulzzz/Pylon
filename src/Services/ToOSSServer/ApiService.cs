@@ -125,13 +125,14 @@ namespace Aiursoft.Pylon.Services.ToOSSServer
             return JResult;
         }
 
-        public static async Task<UploadFileViewModel> UploadFile(string AccessToken, int BucketId, string FilePath)
+        public static async Task<UploadFileViewModel> UploadFile(string AccessToken, int BucketId, string FilePath, int AliveDays)
         {
             var httpContainer = new HTTPService();
             var url = new AiurUrl(Values.OssServerAddress, "api", "UploadFile", new CommonAddressModel
             {
                 AccessToken = AccessToken,
-                BucketId = BucketId
+                BucketId = BucketId,
+                AliveDays = AliveDays
             });
             var result = await httpContainer.PostFile(url, FilePath);
             var jResult = JsonConvert.DeserializeObject<UploadFileViewModel>(result);

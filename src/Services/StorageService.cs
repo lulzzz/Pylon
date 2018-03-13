@@ -13,7 +13,7 @@ namespace Aiursoft.Pylon.Services
 {
     public static class StorageService
     {
-        public static async Task<string> SaveLocally(IFormFile file, SaveFileOptions options = SaveFileOptions.RandomName, string name = "")
+        private static async Task<string> _SaveLocally(IFormFile file, SaveFileOptions options = SaveFileOptions.RandomName, string name = "")
         {
             string directoryPath = GetCurrentDirectory() + DirectorySeparatorChar + $@"Storage" + DirectorySeparatorChar;
             if (Exists(directoryPath) == false)
@@ -38,14 +38,14 @@ namespace Aiursoft.Pylon.Services
             fileStream.Close();
             return localFilePath;
         }
-        public static async Task<string> SaveToOSS(IFormFile file, int BucketId, SaveFileOptions options = SaveFileOptions.RandomName, string AccessToken = null, string name = "", bool deleteLocal = true)
+        public static async Task<string> SaveToOSS(IFormFile file, int BucketId, int AliveDays, SaveFileOptions options = SaveFileOptions.RandomName, string AccessToken = null, string name = "", bool deleteLocal = true)
         {
-            string localFilePath = await SaveLocally(file, options, name);
+            string localFilePath = await _SaveLocally(file, options, name);
             if (AccessToken == null)
             {
                 AccessToken = await AppsContainer.AccessToken()();
             }
-            var fileAddress = await ApiService.UploadFile(AccessToken, BucketId, localFilePath);
+            var fileAddress = await ApiService.UploadFile(AccessToken, BucketId, localFilePath, AliveDays);
             if (deleteLocal)
             {
                 File.Delete(localFilePath);
