@@ -13,8 +13,5 @@ namespace Aiursoft.Pylon.Models.OSS.ApiAddressModels
         public string AccessToken { get; set; }
         [Required]
         public int BucketId { get; set; }
-        [Required]
-        [Range(1, 365)]
-        public int AliveDays { get; set; }
     }
 }

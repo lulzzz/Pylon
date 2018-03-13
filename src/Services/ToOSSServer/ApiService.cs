@@ -128,7 +128,7 @@ namespace Aiursoft.Pylon.Services.ToOSSServer
         public static async Task<UploadFileViewModel> UploadFile(string AccessToken, int BucketId, string FilePath, int AliveDays)
         {
             var httpContainer = new HTTPService();
-            var url = new AiurUrl(Values.OssServerAddress, "api", "UploadFile", new CommonAddressModel
+            var url = new AiurUrl(Values.OssServerAddress, "api", "UploadFile", new UploadFileAddressModel
             {
                 AccessToken = AccessToken,
                 BucketId = BucketId,
