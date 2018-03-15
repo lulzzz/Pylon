@@ -68,6 +68,14 @@ namespace Aiursoft.Pylon
         {
             return app.UseMiddleware<EnforceHttpsMiddleware>();
         }
+        public static IApplicationBuilder UseHandleKahlaOptions(this IApplicationBuilder app)
+        {
+            return app.UseMiddleware<HandleKahlaOptionsMiddleware>();
+        }
+        public static IApplicationBuilder UseLanguageSwitcher(this IApplicationBuilder app)
+        {
+            return app.UseMiddleware<SwitchLanguageMiddleware>();
+        }
         public static IServiceCollection ConfigureLargeFileUploadable(this IServiceCollection services)
         {
             return services.Configure<FormOptions>(x =>
