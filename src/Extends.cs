@@ -13,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Aiursoft.Pylon.Middlewares;
+using Aiursoft.Pylon.Models;
+using Aiursoft.Pylon.Models.API.OAuthAddressModels;
 
 namespace Aiursoft.Pylon
 {
@@ -20,6 +22,7 @@ namespace Aiursoft.Pylon
     {
         public static string CurrentAppId { get; private set; } = string.Empty;
         public static string CurrentAppSecret { get; private set; } = string.Empty;
+
         public static CultureInfo[] GetSupportedLanguages()
         {
             var SupportedCultures = new CultureInfo[]
@@ -82,6 +85,24 @@ namespace Aiursoft.Pylon
             {
                 x.ValueLengthLimit = int.MaxValue;
                 x.MultipartBodyLengthLimit = int.MaxValue;
+            });
+        }
+        public static IActionResult SignoutRootServer(this Controller controller, AiurUrl ToRedirect)
+        {
+            var r = controller.HttpContext.Request;
+            string serverPosition = $"{r.Scheme}://{r.Host}{ToRedirect}";
+            var toRedirect = new AiurUrl(Values.ApiServerAddress, "oauth", "UserSignout", new UserSignoutAddressModel
+            {
+                ToRedirect = serverPosition
+            });
+            return controller.Redirect(toRedirect.ToString());
+        }
+        public static JsonResult Protocal(this Controller controller, ErrorType errorType, string errorMessage)
+        {
+            return controller.Json(new AiurProtocal
+            {
+                code = errorType,
+                message = errorMessage
             });
         }
     }
