@@ -9,10 +9,14 @@ using System.Threading.Tasks;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Mvc;
+using Aiursoft.Pylon.Middlewares;
 
 namespace Aiursoft.Pylon
 {
-    public static class Middlewares
+    public static class Extends
     {
         public static string CurrentAppId { get; private set; } = string.Empty;
         public static string CurrentAppSecret { get; private set; } = string.Empty;
@@ -25,7 +29,6 @@ namespace Aiursoft.Pylon
             };
             return SupportedCultures;
         }
-	    // This is a method
         public static IApplicationBuilder UseAiursoftAuthenticationFromConfiguration(this IApplicationBuilder app, IConfiguration configuration, string appName = "api")
         {
             var AppId = configuration[$"{appName}AppId"];
@@ -47,7 +50,6 @@ namespace Aiursoft.Pylon
             });
             return app;
         }
-
         public static IApplicationBuilder UseAiursoftAuthentication(this IApplicationBuilder app, string appId, string appSecret)
         {
             if (string.IsNullOrWhiteSpace(appId))
@@ -61,6 +63,18 @@ namespace Aiursoft.Pylon
             CurrentAppId = appId;
             CurrentAppSecret = appSecret;
             return app;
+        }
+        public static IApplicationBuilder UseEnforceHttps(this IApplicationBuilder app)
+        {
+            return app.UseMiddleware<EnforceHttpsMiddleware>();
+        }
+        public static IServiceCollection ConfigureLargeFileUploadable(this IServiceCollection services)
+        {
+            return services.Configure<FormOptions>(x =>
+            {
+                x.ValueLengthLimit = int.MaxValue;
+                x.MultipartBodyLengthLimit = int.MaxValue;
+            });
         }
     }
 }

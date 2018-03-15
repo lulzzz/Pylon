@@ -12,7 +12,7 @@ namespace Aiursoft.Pylon.Services
             var action = register ? "register" : "authorize";
             var url = new AiurUrl(Values.ApiServerAddress, "oauth", action, new AuthorizeAddressModel
             {
-                appid = Middlewares.CurrentAppId,
+                appid = Extends.CurrentAppId,
                 redirect_uri = destination.ToString(),
                 response_type = "code",
                 scope = "snsapi_base",
