@@ -18,7 +18,7 @@ namespace Aiursoft.Pylon.Services
         private readonly ILogger _logger;
         public AiurSMSSender(
             IConfiguration configuration,
-            ILogger logger)
+            ILogger<AiurSMSSender> logger)
         {
             SMSAccountFrom = configuration["SMSAccountFrom"];
             SMSAccountIdentification = configuration["SMSAccountIdentification"];
