@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
 
 namespace Aiursoft.Pylon
 {
@@ -42,5 +43,13 @@ namespace Aiursoft.Pylon
         public static string FacebookAddress { get; private set; } = "https://facebook.com/";
         public static string TwitterAddress { get; private set; } = "https://twitter.com/";
         public static KeyValuePair<string, string> directShowString => new KeyValuePair<string, string>("show", "direct");
+        public static PasswordOptions PasswordOptions => new PasswordOptions
+        {
+            RequireDigit = false,
+            RequiredLength = 6,
+            RequireLowercase = false,
+            RequireUppercase = false,
+            RequireNonAlphanumeric = false
+        };
     }
 }
