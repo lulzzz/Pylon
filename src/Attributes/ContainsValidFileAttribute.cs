@@ -10,37 +10,32 @@ namespace Aiursoft.Pylon.Attributes
 {
     public class ContainsValidFileAttribute : ActionFilterAttribute
     {
-        private string _ErrorRedirect { get; set; }
-        public ContainsValidFileAttribute(string ErrorRedirect)
+        public ContainsValidFileAttribute()
         {
-            _ErrorRedirect = ErrorRedirect;
         }
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             base.OnActionExecuting(context);
             // Not a post method
-            if(context.HttpContext.Request.Method.ToUpper().Trim()!="POST")
+            if (context.HttpContext.Request.Method.ToUpper().Trim() != "POST")
             {
-                context.Result = new RedirectResult(_ErrorRedirect);
-                return;
+                context.ModelState.AddModelError("", "To upload your file, you have to submit the form!");
             }
             // No file
             if (context.HttpContext.Request.Form.Files.Count < 1)
             {
-                context.Result = new RedirectResult(_ErrorRedirect);
-                return;
+                context.ModelState.AddModelError("", "Please provide a file!");
             }
             var file = context.HttpContext.Request.Form.Files.First();
             // File is null
             if (file == null)
             {
-                context.Result = new RedirectResult(_ErrorRedirect);
-                return;
+                context.ModelState.AddModelError("", "Please provide a file!");
             }
             // Not in valid size
             if (file.Length < 1 || file.Length > Values.MaxFileSize)
             {
-                context.Result = new RedirectResult(_ErrorRedirect);
+                context.ModelState.AddModelError("", "Please provide a file which is smaller than 1GB!");
                 return;
             }
         }

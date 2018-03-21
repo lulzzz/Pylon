@@ -41,12 +41,13 @@ namespace Aiursoft.Pylon.Attributes
 
         public AiurForceAuth(string preferController, string preferAction, bool justTry, bool register = false)
         {
-            this._preferController = preferController;
-            this._preferAction = preferAction;
-            this._justTry = justTry ? true as bool? : null;
-            this._PreferPageSet = true;
-            this._register = register;
+            _preferController = preferController;
+            _preferAction = preferAction;
+            _justTry = justTry ? true as bool? : null;
+            _PreferPageSet = true;
+            _register = register;
         }
+
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             base.OnActionExecuting(context);
@@ -67,7 +68,7 @@ namespace Aiursoft.Pylon.Attributes
                 }
                 else
                 {
-                    context.Result = _Redirect(context, controller.Request.Path.Value, null, _register);
+                    context.Result = _Redirect(context, controller.Request.Path.Value, justTry: null, register: _register);
                 }
             }
             //Signed in, let him go to prefered page directly.
