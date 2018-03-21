@@ -20,17 +20,20 @@ namespace Aiursoft.Pylon.Attributes
             if (context.HttpContext.Request.Method.ToUpper().Trim() != "POST")
             {
                 context.ModelState.AddModelError("", "To upload your file, you have to submit the form!");
+                return;
             }
             // No file
             if (context.HttpContext.Request.Form.Files.Count < 1)
             {
                 context.ModelState.AddModelError("", "Please provide a file!");
+                return;
             }
             var file = context.HttpContext.Request.Form.Files.First();
             // File is null
             if (file == null)
             {
                 context.ModelState.AddModelError("", "Please provide a file!");
+                return;
             }
             // Not in valid size
             if (file.Length < 1 || file.Length > Values.MaxFileSize)
