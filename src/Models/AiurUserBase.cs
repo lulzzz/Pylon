@@ -12,20 +12,19 @@ namespace Aiursoft.Pylon.Models
         public AiurUserBase() { }
         public AiurUserBase(UserInfoViewModel model)
         {
-            this.Update(model);
+            Update(model);
         }
 
         public void Update(UserInfoViewModel model)
         {
-            this.NickName = model.User.NickName;
-            this.Sex = model.User.Sex;
-            this.HeadImgUrl = model.User.HeadImgUrl;
-            this.PreferedLanguage = model.User.PreferedLanguage;
-            this.AccountCreateTime = model.User.AccountCreateTime;
-            this.Email = model.User.Email;
-            this.Bio = model.User.Bio;
-            this.EmailConfirmed = model.User.EmailConfirmed;
-            this.PhoneNumber = model.User.PhoneNumber;
+            NickName = model.User.NickName;
+            Sex = model.User.Sex;
+            HeadImgUrl = model.User.HeadImgUrl;
+            PreferedLanguage = model.User.PreferedLanguage;
+            AccountCreateTime = model.User.AccountCreateTime;
+            Email = model.User.Email;
+            Bio = model.User.Bio;
+            EmailConfirmed = model.User.EmailConfirmed;
         }
 
         [JsonProperty]

@@ -11,4 +11,9 @@ namespace Aiursoft.Pylon.Models.API.UserAddressModels
         public string OpenId { get; set; }
         public string Phone { get; set; }
     }
+    public class ViewPhoneNumberAddressModel : WithAccessTokenAddressModel
+    {
+        [Required]
+        public string OpenId { get; set; }
+    }
 }

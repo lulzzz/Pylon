@@ -48,6 +48,20 @@ namespace Aiursoft.Pylon.Services.ToAPIServer
                 throw new AiurUnexceptedResponse(JResult);
             return JResult;
         }
+        public async static Task<AiurValue<string>> ViewPhoneNumberAsync(string OpenId, string AccessToken)
+        {
+            var HTTPContainer = new HTTPService();
+            var url = new AiurUrl(Values.ApiServerAddress, "User", "ViewPhoneNumber", new ViewPhoneNumberAddressModel
+            {
+                AccessToken = AccessToken,
+                OpenId = OpenId
+            });
+            var result = await HTTPContainer.Get(url);
+            var JResult = JsonConvert.DeserializeObject<AiurValue<string>>(result);
+            if (JResult.code != ErrorType.Success)
+                throw new AiurUnexceptedResponse(JResult);
+            return JResult;
+        }
         public async static Task<AiurProtocal> SetPhoneNumberAsync(string OpenId, string AccessToken, string PhoneNumber)
         {
             var HTTPContainer = new HTTPService();
@@ -59,7 +73,7 @@ namespace Aiursoft.Pylon.Services.ToAPIServer
             });
             var result = await HTTPContainer.Get(url);
             var JResult = JsonConvert.DeserializeObject<AiurProtocal>(result);
-            if (JResult.code != ErrorType.Success && JResult.code != ErrorType.WrongKey)
+            if (JResult.code != ErrorType.Success)
                 throw new AiurUnexceptedResponse(JResult);
             return JResult;
         }

@@ -31,8 +31,7 @@ namespace Aiursoft.Pylon
                     AccountCreateTime = userinfo.User.AccountCreateTime,
                     Email = userinfo.User.Email,
                     Bio = userinfo.User.Bio,
-                    EmailConfirmed = userinfo.User.EmailConfirmed,
-                    PhoneNumber = userinfo.User.PhoneNumber
+                    EmailConfirmed = userinfo.User.EmailConfirmed
                 };
                 var result = await userManager.CreateAsync(current);
             }
