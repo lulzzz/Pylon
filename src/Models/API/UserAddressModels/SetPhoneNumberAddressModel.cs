@@ -16,4 +16,11 @@ namespace Aiursoft.Pylon.Models.API.UserAddressModels
         [Required]
         public string OpenId { get; set; }
     }
+    public class VerifyEmailAddressModel : WithAccessTokenAddressModel
+    {
+        [Required]
+        public string OpenId { get; set; }
+        [Required]
+        public bool Verified { get; set; }
+    }
 }
