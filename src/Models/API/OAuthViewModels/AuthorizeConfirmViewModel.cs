@@ -23,8 +23,12 @@ namespace Aiursoft.Pylon.Models.API.OAuthViewModels
         public string Email { get; set; }
         public string UserIcon { get; set; }
 
-        public virtual IEnumerable<AppPermission> Permissions { get; set; }
-
+        public bool ViewOpenId { get; set; }
+        public bool ViewPhoneNumber { get; set; }
+        public bool ChangePhoneNumber { get; set; }
+        public bool ConfirmEmail { get; set; }
+        public bool ChangeBasicInfo { get; set; }
+        public bool ChangePassword { get; set; }
 
         public string GetRegexRedirectUrl()
         {

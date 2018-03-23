@@ -42,7 +42,12 @@ namespace Aiursoft.Pylon.Models.Developer
         public virtual bool DebugMode { get; set; }
         public virtual string AppDomain { get; set; }
 
-        public virtual IEnumerable<AppPermission> Permissions { get; set; }
+        public bool ViewOpenId { get; set; } = true;
+        public bool ViewPhoneNumber { get; set; }
+        public bool ChangePhoneNumber { get; set; }
+        public bool ConfirmEmail { get; set; }
+        public bool ChangeBasicInfo { get; set; }
+        public bool ChangePassword { get; set; }
 
         public virtual string CreaterId { get; set; }
         [ForeignKey(nameof(CreaterId))]
