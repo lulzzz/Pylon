@@ -34,10 +34,7 @@ namespace Aiursoft.Pylon.Models
         public override string Email { get => base.Email; set => base.Email = value; }
         [JsonProperty]
         public override bool EmailConfirmed { get => base.EmailConfirmed; set => base.EmailConfirmed = value; }
-        [JsonProperty]
-        public override string PhoneNumber { get => base.PhoneNumber; set => base.PhoneNumber = value; }
         [NotMapped]
-        [JsonProperty]
         public override bool PhoneNumberConfirmed { get => !string.IsNullOrEmpty(PhoneNumber); }
         [JsonProperty]
         public virtual string Bio { get; set; }
