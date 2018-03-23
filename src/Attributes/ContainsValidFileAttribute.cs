@@ -35,8 +35,14 @@ namespace Aiursoft.Pylon.Attributes
                 context.ModelState.AddModelError("", "Please provide a file!");
                 return;
             }
-            // Not in valid size
-            if (file.Length < 1 || file.Length > Values.MaxFileSize)
+            // Too small
+            if (file.Length < 1)
+            {
+                context.ModelState.AddModelError("", "Please provide a valid file!");
+                return;
+            }
+            // Too large
+            if (file.Length > Values.MaxFileSize)
             {
                 context.ModelState.AddModelError("", "Please provide a file which is smaller than 1GB!");
                 return;
