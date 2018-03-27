@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Aiursoft.Pylon.Middlewares;
 using Aiursoft.Pylon.Models;
 using Aiursoft.Pylon.Models.API.OAuthAddressModels;
+using Microsoft.AspNetCore.Http;
 
 namespace Aiursoft.Pylon
 {
@@ -104,6 +105,13 @@ namespace Aiursoft.Pylon
                 code = errorType,
                 message = errorMessage
             });
+        }
+        public static void SetClientLang(this Controller controller, string culture)
+        {
+            controller.HttpContext.Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) });
         }
     }
 }

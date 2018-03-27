@@ -17,6 +17,10 @@ namespace Aiursoft.Pylon.Models
 
         public void Update(UserInfoViewModel model)
         {
+            if(string.IsNullOrWhiteSpace(Id))
+            {
+                Id = model.User.Id;
+            }
             NickName = model.User.NickName;
             Sex = model.User.Sex;
             HeadImgUrl = model.User.HeadImgUrl;

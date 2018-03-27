@@ -8,6 +8,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Http;
 using System;
+using Aiursoft.Pylon.Models.API.OAuthViewModels;
 
 namespace Aiursoft.Pylon
 {
@@ -20,20 +21,13 @@ namespace Aiursoft.Pylon
             var current = await userManager.FindByIdAsync(userinfo.User.Id);
             if (current == null)
             {
-                current = new T()
-                {
-                    Id = userinfo.User.Id,
-                    NickName = userinfo.User.NickName,
-                    Sex = userinfo.User.Sex,
-                    HeadImgUrl = userinfo.User.HeadImgUrl,
-                    UserName = userinfo.User.Id,
-                    PreferedLanguage = userinfo.User.PreferedLanguage,
-                    AccountCreateTime = userinfo.User.AccountCreateTime,
-                    Email = userinfo.User.Email,
-                    Bio = userinfo.User.Bio,
-                    EmailConfirmed = userinfo.User.EmailConfirmed
-                };
+                current = new T();
+                current.Update(userinfo);
                 var result = await userManager.CreateAsync(current);
+                if (!result.Succeeded)
+                {
+                    throw new InvalidOperationException($"The user info ({userinfo.User.Id}) we get could not register to our database.");
+                }
             }
             else
             {
