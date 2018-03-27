@@ -9,11 +9,15 @@ using System.Threading.Tasks;
 
 namespace Aiursoft.Pylon.Services.ToStargateServer
 {
-    public class MessageService
+    public class PushMessageService
     {
-        public static async Task<AiurProtocal> PushMessageAsync(string AccessToken, int ChannelId, string MessageContent, bool noexception = false)
+        private readonly HTTPService _httpService;
+        public PushMessageService(HTTPService httpService)
         {
-            var httpContainer = new HTTPService();
+            _httpService = httpService;
+        }
+        public async Task<AiurProtocal> PushMessageAsync(string AccessToken, int ChannelId, string MessageContent, bool noexception = false)
+        {
             var url = new AiurUrl(Values.StargateServerAddress, "Message", "PushMessage", new { });
             var form = new AiurUrl(string.Empty, new PushMessageAddressModel
             {
@@ -21,7 +25,7 @@ namespace Aiursoft.Pylon.Services.ToStargateServer
                 ChannelId = ChannelId,
                 MessageContent = MessageContent
             });
-            var result = await httpContainer.Post(url, form);
+            var result = await _httpService.Post(url, form);
             var jResult = JsonConvert.DeserializeObject<AiurProtocal>(result);
             if (!noexception && jResult.code != ErrorType.Success)
             {

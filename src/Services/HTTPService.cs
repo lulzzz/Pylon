@@ -12,6 +12,10 @@ namespace Aiursoft.Pylon.Services
 {
     public class HTTPService
     {
+        public HTTPService()
+        {
+
+        }
         public CookieContainer CC = new CookieContainer();
 
         public async Task<string> Get(AiurUrl Url)
