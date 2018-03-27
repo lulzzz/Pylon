@@ -5,7 +5,6 @@ using System.Text;
 
 namespace Aiursoft.Pylon.Models.API.UserAddressModels
 {
-
     public class ChangeProfileAddressModel : WithAccessTokenAddressModel
     {
         public string OpenId { get; set; }
