@@ -16,7 +16,7 @@ namespace Aiursoft.Pylon.Services
     {
         private readonly UserManager<T> _userManager;
         private readonly SignInManager<T> _signInManager;
-         
+
         public AuthService(
             UserManager<T> userManager,
             SignInManager<T> signInManager)
@@ -37,7 +37,12 @@ namespace Aiursoft.Pylon.Services
                 var result = await _userManager.CreateAsync(current);
                 if (!result.Succeeded)
                 {
-                    throw new InvalidOperationException($"The user info ({userinfo.User.Id}) we get could not register to our database.");
+                    var message = new StringBuilder();
+                    foreach (var error in result.Errors)
+                    {
+                        message.AppendLine(error.Description);
+                    }
+                    throw new InvalidOperationException($"The user info ({userinfo.User.Id}) we get could not register to our database because {message}.");
                 }
             }
             else
