@@ -26,6 +26,7 @@ namespace Aiursoft.Pylon.Models
             HeadImgUrl = model.User.HeadImgUrl;
             PreferedLanguage = model.User.PreferedLanguage;
             AccountCreateTime = model.User.AccountCreateTime;
+            UserName = model.User.Email;
             Email = model.User.Email;
             Bio = model.User.Bio;
             EmailConfirmed = model.User.EmailConfirmed;
