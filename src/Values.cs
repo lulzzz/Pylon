@@ -17,7 +17,7 @@ namespace Aiursoft.Pylon
     {
         public static string ProjectName = "Aiursoft";
         public static string CorpPhoneNumber = "(+86) 8368-5000";
-        private static string Schema = "https";
+        public static string Schema = "https";
         public static string WSSchema = "wss";
         public static long MaxFileSize = 1000 * 1024 * 1024;
         public static string Domain { get; private set; } = "aiursoft.com";

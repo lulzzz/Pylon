@@ -25,7 +25,7 @@ namespace Aiursoft.Pylon.Services
             _signInManager = signInManager;
         }
 
-        public async Task<T> AuthApp(AuthResultAddressModel model)
+        public async Task<T> AuthApp(AuthResultAddressModel model, bool isPersistent = false)
         {
             var openId = await OAuthService.CodeToOpenIdAsync(model.code, await AppsContainer.AccessToken()());
             var userinfo = await OAuthService.OpenIdToUserInfo(AccessToken: await AppsContainer.AccessToken()(), openid: openId.openid);
@@ -50,7 +50,7 @@ namespace Aiursoft.Pylon.Services
                 current.Update(userinfo);
                 await _userManager.UpdateAsync(current);
             }
-            await _signInManager.SignInAsync(current, false);
+            await _signInManager.SignInAsync(current, isPersistent);
             return current;
         }
     }

@@ -25,7 +25,7 @@ namespace Aiursoft.Pylon.Middlewares
             }
             else
             {
-                context.Response.Headers.Add("Access-Control-Allow-Origin", "https://kahla.app.aiursoft.com");
+                context.Response.Headers.Add("Access-Control-Allow-Origin", Values.KahlaAppAddress);
             }
             context.Response.Headers.Add("Access-Control-Allow-Credentials", "true");
             if (context.Request.Method == "OPTIONS")
