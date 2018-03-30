@@ -3,6 +3,8 @@ using Aiursoft.Pylon.Models.API.OAuthViewModels;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Aiursoft.Pylon.Models
 {
@@ -17,7 +19,7 @@ namespace Aiursoft.Pylon.Models
 
         public void Update(UserInfoViewModel model)
         {
-            if(string.IsNullOrWhiteSpace(Id))
+            if (string.IsNullOrWhiteSpace(Id))
             {
                 Id = model.User.Id;
             }
@@ -31,15 +33,9 @@ namespace Aiursoft.Pylon.Models
             Bio = model.User.Bio;
             EmailConfirmed = model.User.EmailConfirmed;
         }
-
+        [Key]
         [JsonProperty]
         public override string Id { get => base.Id; set => base.Id = value; }
-        [JsonProperty]
-        public override string Email { get => base.Email; set => base.Email = value; }
-        [JsonProperty]
-        public override bool EmailConfirmed { get => base.EmailConfirmed; set => base.EmailConfirmed = value; }
-        [NotMapped]
-        public override bool PhoneNumberConfirmed { get => !string.IsNullOrEmpty(PhoneNumber); }
         [JsonProperty]
         public virtual string Bio { get; set; }
         [JsonProperty]
@@ -52,5 +48,33 @@ namespace Aiursoft.Pylon.Models
         public virtual string PreferedLanguage { get; set; } = "UnSet";
         [JsonProperty]
         public virtual DateTime AccountCreateTime { get; set; } = DateTime.Now;
+
+        public int PrimaryEmailId { get; set; }
+        [ForeignKey(nameof(PrimaryEmailId))]
+        [JsonProperty]
+        public UserEmail PrimaryEmail { get; set; }
+
+        [JsonProperty]
+        public override bool EmailConfirmed { get; set; }
+        [JsonProperty]
+        public override string Email { get; set; }
+        [NotMapped]
+        public override bool PhoneNumberConfirmed { get => !string.IsNullOrEmpty(PhoneNumber); }
+
+        [InverseProperty(nameof(UserEmail.Owner))]
+        public List<UserEmail> Emails { get; set; }
+    }
+
+    public class UserEmail
+    {
+        [Key]
+        public int Id { get; set; }
+        [EmailAddress]
+        public string EmailAddress { get; set; }
+        public bool Validated { get; set; }
+
+        public string OwnerId { get; set; }
+        [ForeignKey(nameof(OwnerId))]
+        public AiurUserBase Owner { get; set; }
     }
 }

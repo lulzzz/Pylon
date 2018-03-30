@@ -1,4 +1,5 @@
-﻿using Aiursoft.Pylon.Models;
+﻿using Aiursoft.Pylon.Exceptions;
+using Aiursoft.Pylon.Models;
 using Aiursoft.Pylon.Models.Developer.ApiAddressModels;
 using Aiursoft.Pylon.Models.Developer.ApiViewModels;
 using Newtonsoft.Json;
@@ -34,7 +35,7 @@ namespace Aiursoft.Pylon.Services.ToDeveloperServer
             var JResult = JsonConvert.DeserializeObject<AppInfoViewModel>(result);
 
             if (JResult.code != ErrorType.Success)
-                throw new Exception(JResult.message);
+                throw new AiurUnexceptedResponse(JResult);
             return JResult;
         }
     }
