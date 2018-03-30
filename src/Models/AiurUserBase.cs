@@ -49,11 +49,6 @@ namespace Aiursoft.Pylon.Models
         [JsonProperty]
         public virtual DateTime AccountCreateTime { get; set; } = DateTime.Now;
 
-        public int PrimaryEmailId { get; set; }
-        [ForeignKey(nameof(PrimaryEmailId))]
-        [JsonProperty]
-        public UserEmail PrimaryEmail { get; set; }
-
         [JsonProperty]
         public override bool EmailConfirmed { get; set; }
         [JsonProperty]
@@ -61,20 +56,5 @@ namespace Aiursoft.Pylon.Models
         [NotMapped]
         public override bool PhoneNumberConfirmed { get => !string.IsNullOrEmpty(PhoneNumber); }
 
-        [InverseProperty(nameof(UserEmail.Owner))]
-        public List<UserEmail> Emails { get; set; }
-    }
-
-    public class UserEmail
-    {
-        [Key]
-        public int Id { get; set; }
-        [EmailAddress]
-        public string EmailAddress { get; set; }
-        public bool Validated { get; set; }
-
-        public string OwnerId { get; set; }
-        [ForeignKey(nameof(OwnerId))]
-        public AiurUserBase Owner { get; set; }
     }
 }
