@@ -34,8 +34,8 @@ namespace Aiursoft.Pylon.Services.ToDeveloperServer
             var result = await HTTPContainer.Get(url);
             var JResult = JsonConvert.DeserializeObject<AppInfoViewModel>(result);
 
-            if (JResult.code != ErrorType.Success)
-                throw new AiurUnexceptedResponse(JResult);
+            //if (JResult.code != ErrorType.Success)
+            //    throw new AiurUnexceptedResponse(JResult);
             return JResult;
         }
     }
