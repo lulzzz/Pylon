@@ -33,7 +33,6 @@ namespace Aiursoft.Pylon.Models
             Bio = model.User.Bio;
             EmailConfirmed = model.User.EmailConfirmed;
         }
-        [Key]
         [JsonProperty]
         public override string Id { get => base.Id; set => base.Id = value; }
         [JsonProperty]
